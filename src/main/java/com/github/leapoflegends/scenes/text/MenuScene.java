@@ -20,8 +20,10 @@ public class MenuScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var quitButton = new QuitButton();
+        var quitButton = new QuitButton(new Coordinate2D(400, 450), game);
         var how2Play = new HowToPlayButton(new Coordinate2D(600, 450),game);
-        var level1 = ;
+
+        addEntity(quitButton);
+        addEntity(how2Play);
     }
 }
