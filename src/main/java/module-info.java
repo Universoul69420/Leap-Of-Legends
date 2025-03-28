@@ -1,5 +1,6 @@
 module leapoflegends {
     requires hanyaeger;
+    requires jdk.compiler;
 
     exports com.github.leapoflegends;
 
