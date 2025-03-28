@@ -1,4 +1,15 @@
 package com.github.leapoflegends.scenes;
 
-public class GameCompleteScene {
+import com.github.hanyaeger.api.scenes.StaticScene;
+
+public class GameCompleteScene extends StaticScene {
+    @Override
+    public void setupScene() {
+
+    }
+
+    @Override
+    public void setupEntities() {
+
+    }
 }
