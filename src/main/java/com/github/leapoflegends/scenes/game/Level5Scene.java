@@ -1,12 +1,12 @@
-package com.github.leapoflegends.scenes;
+package com.github.leapoflegends.scenes.game;
 
-import com.github.hanyaeger.api.scenes.StaticScene;
+import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.leapoflegends.MainGame;
 
-public class HowToPlayScene extends StaticScene {
+public class Level5Scene extends DynamicScene {
     private MainGame game;
 
-    public HowToPlayScene(MainGame game) {
+    public Level5Scene(MainGame game) {
         this.game = game;
     }
     @Override

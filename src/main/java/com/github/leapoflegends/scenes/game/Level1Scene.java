@@ -1,4 +1,4 @@
-package com.github.leapoflegends.scenes;
+package com.github.leapoflegends.scenes.game;
 
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;

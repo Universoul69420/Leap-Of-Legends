@@ -1,12 +1,12 @@
-package com.github.leapoflegends.scenes;
+package com.github.leapoflegends.scenes.text;
 
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.leapoflegends.MainGame;
 
-public class GameCompleteScene extends StaticScene {
+public class HowToPlayScene extends StaticScene {
     private MainGame game;
 
-    public GameCompleteScene(MainGame game) {
+    public HowToPlayScene(MainGame game) {
         this.game = game;
     }
     @Override

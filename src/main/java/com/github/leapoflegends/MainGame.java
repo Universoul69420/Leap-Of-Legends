@@ -2,7 +2,8 @@ package com.github.leapoflegends;
 
 import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.Size;
-import com.github.leapoflegends.scenes.*;
+import com.github.leapoflegends.scenes.game.*;
+import com.github.leapoflegends.scenes.text.*;
 
 public class MainGame extends YaegerGame {
 
@@ -16,7 +17,7 @@ public class MainGame extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Leap of Legends");
-        setSize(new Size(800, 600));
+        setSize(new Size(800, 640));
     }
 
 
