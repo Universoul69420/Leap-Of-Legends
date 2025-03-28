@@ -21,6 +21,9 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
     public Player(Coordinate2D location) {
         super("FILENAME", location, new Size(16, 32), 1, 2);
         health = 100;
+
+        setGravityConstant(0.055);
+        setFrictionConstant(0.04);
     }
     @Override
     public void onCollision(List<Collider> list) {
