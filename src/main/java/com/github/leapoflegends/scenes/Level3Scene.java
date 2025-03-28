@@ -1,4 +1,15 @@
 package com.github.leapoflegends.scenes;
 
-public class Level3Scene {
+import com.github.hanyaeger.api.scenes.DynamicScene;
+
+public class Level3Scene extends DynamicScene {
+    @Override
+    public void setupScene() {
+
+    }
+
+    @Override
+    public void setupEntities() {
+
+    }
 }
