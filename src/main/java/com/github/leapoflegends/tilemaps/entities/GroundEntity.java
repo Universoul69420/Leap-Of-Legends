@@ -9,6 +9,6 @@ public class GroundEntity extends SpriteEntity implements Collider {
 
 
     public GroundEntity(final Coordinate2D location, final Size size, final Size tileSize) {
-        super("entities/World-Tiles1.png", location, size);
+        super("sprites/World-Tiles1.png", location, size);
     }
 }
