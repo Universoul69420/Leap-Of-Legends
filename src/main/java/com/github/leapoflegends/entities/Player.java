@@ -28,14 +28,14 @@ public class Player extends DynamicRectangleEntity implements Collider, Collided
         health = 100;
 
         setGravityConstant(0.055);
-        // setFrictionConstant(0.04);
+        setFrictionConstant(0.04);
     }
 
     @Override
     public void onCollision(List<Collider> colliders) {
         for (Collider collider : colliders) {
             if (collider instanceof GroundEntity) {
-                setMotion(0, 180);
+                setMotion(0, 0);
                 break;
             }
         }
@@ -46,7 +46,12 @@ public class Player extends DynamicRectangleEntity implements Collider, Collided
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-     }
+        if (sceneBorder == SceneBorder.LEFT) {
+            setAnchorLocationX(0);
+        } else if (sceneBorder == SceneBorder.TOP) {
+            setAnchorLocationY(0);
+        }
+    }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> keys) {
