@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.leapoflegends.MainGame;
-import com.github.leapoflegends.entities.Player;
+import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.tilemaps.GroundTileMap;
 
 public class Level1Scene extends DynamicScene implements TileMapContainer {
