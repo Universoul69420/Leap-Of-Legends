@@ -6,11 +6,18 @@ import com.github.leapoflegends.tilemaps.entities.GroundEntity;
 
 
 public class GroundTileMap extends TileMap {
-    private static final Size TILE_SIZE = new Size(16, 16);
+    private Size calculatedTileSize;
+
+    public void setSceneWidth(double sceneWidth) {
+        int columns = defineMap()[0].length;
+        double tileWidth = sceneWidth / columns;
+        double tileHeight = tileWidth;
+        calculatedTileSize = new Size(tileWidth, tileHeight);
+    }
 
     @Override
     public void setupEntities() {
-        addEntity(1, GroundEntity.class, TILE_SIZE);
+        addEntity(1, GroundEntity.class, calculatedTileSize);
     }
 
     @Override
@@ -36,5 +43,8 @@ public class GroundTileMap extends TileMap {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
+    }
+    public Size getCalculatedTileSize() {
+        return calculatedTileSize;
     }
 }

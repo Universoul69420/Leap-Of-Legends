@@ -7,8 +7,7 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class GroundEntity extends SpriteEntity implements Collider {
 
-
-    public GroundEntity(final Coordinate2D location, final Size size, final Size tileSize) {
+    public GroundEntity(final Coordinate2D location, final Size size) {
         super("sprites/World-Tiles1.png", location, size);
     }
 }

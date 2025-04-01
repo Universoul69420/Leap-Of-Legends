@@ -1,8 +1,10 @@
 package com.github.leapoflegends.scenes.game;
 
+import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.leapoflegends.MainGame;
+import com.github.leapoflegends.entities.Player;
 import com.github.leapoflegends.tilemaps.GroundTileMap;
 
 public class Level1Scene extends DynamicScene implements TileMapContainer {
@@ -19,7 +21,8 @@ public class Level1Scene extends DynamicScene implements TileMapContainer {
 
     @Override
     public void setupEntities() {
-
+        var player = new Player(new Coordinate2D(500, 200));
+        addEntity(player);
     }
 
     public void setupTileMaps() {
