@@ -12,7 +12,7 @@ public class MainGame extends YaegerGame {
     public static void main(String[] args) {
         launch(args);
     }
-
+    public static int currentLevel = 1;
 
     @Override
     public void setupGame() {
@@ -35,6 +35,6 @@ public class MainGame extends YaegerGame {
         addScene(8, new Level4Scene(this));
         addScene(9, new Level5Scene(this));
 
-        setActiveScene(5);
+        setActiveScene(0);
     }
 }

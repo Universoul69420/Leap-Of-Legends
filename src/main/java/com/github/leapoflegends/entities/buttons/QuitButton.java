@@ -36,6 +36,6 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-
+        game.quit();
     }
 }

@@ -12,32 +12,34 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class MenuButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class LevelStartButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+    int levelScene;
     MainGame game;
-
-    public MenuButton(Coordinate2D initialLocation, MainGame game) {
-        super(initialLocation,
-                "Menu"
+    public LevelStartButton(Coordinate2D location, int levelId, MainGame game) {
+        super(location, "Level " + levelId
         );
+        levelScene = levelId+4;
         this.game = game;
-        setFill(Color.BLACK);
-        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 30));
+        setFill(Color.RED);
+        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 22));
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        game.setActiveScene(0);
-    }
+        MainGame.currentLevel = levelScene-3;
+        game.setActiveScene(levelScene);
 
-    @Override
-    public void onMouseExited() {
-        setFill(Color.BLACK);
-        setCursor(Cursor.DEFAULT);
     }
 
     @Override
     public void onMouseEntered() {
-        setFill(Color.GRAY);
-        setCursor(Cursor.OPEN_HAND);
+        setFill(Color.MAROON);
+        setCursor(Cursor.CROSSHAIR);
+    }
+
+    @Override
+    public void onMouseExited() {
+        setFill(Color.RED);
+        setCursor(Cursor.DEFAULT);
     }
 }

@@ -15,7 +15,7 @@ public class MenuScene extends StaticScene {
     }
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/menu.png");
+        setBackgroundImage("backgrounds/menubase.png");
     }
 
     @Override

@@ -13,7 +13,7 @@ public class HowToPlayScene extends StaticScene {
     }
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/menu_background");
+        setBackgroundImage("backgrounds/keybinds");
     }
 
     @Override
