@@ -20,8 +20,8 @@ public class LevelStartButton extends TextEntity implements MouseButtonPressedLi
         );
         levelScene = levelId+4;
         this.game = game;
-        setFill(Color.RED);
-        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 22));
+        setFill(Color.MAROON);
+        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 40));
     }
 
     @Override
@@ -33,13 +33,13 @@ public class LevelStartButton extends TextEntity implements MouseButtonPressedLi
 
     @Override
     public void onMouseEntered() {
-        setFill(Color.MAROON);
+        setFill(Color.BLACK);
         setCursor(Cursor.CROSSHAIR);
     }
 
     @Override
     public void onMouseExited() {
-        setFill(Color.RED);
+        setFill(Color.MAROON);
         setCursor(Cursor.DEFAULT);
     }
 }

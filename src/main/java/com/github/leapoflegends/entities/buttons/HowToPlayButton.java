@@ -9,6 +9,8 @@ import com.github.leapoflegends.MainGame;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class HowToPlayButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     MainGame game;
@@ -18,6 +20,8 @@ public class HowToPlayButton extends TextEntity implements MouseButtonPressedLis
                 "How to play?"
                 );
         this.game = game;
+        setFill(Color.BLACK);
+        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 48));
     }
 
     @Override

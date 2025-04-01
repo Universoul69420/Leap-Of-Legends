@@ -16,10 +16,10 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
     MainGame game;
 
     public QuitButton(Coordinate2D initialLocation, MainGame game) {
-        super(initialLocation, "Quit Game");
+        super(initialLocation, "QUIT");
         this.game = game;
         setFill(Color.BLACK);
-        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 30));
+        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 48));
     }
 
     @Override

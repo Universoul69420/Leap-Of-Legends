@@ -13,12 +13,12 @@ public class HowToPlayScene extends StaticScene {
     }
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/keybinds");
+        setBackgroundImage("backgrounds/how2playback.png");
     }
 
     @Override
     public void setupEntities() {
-        var menuButton = new MenuButton(new Coordinate2D(getWidth()/2, getHeight()/2), game);
+        var menuButton = new MenuButton(new Coordinate2D(10, 10), game);
         addEntity(menuButton);
     }
 }
