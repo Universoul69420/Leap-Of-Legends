@@ -9,6 +9,10 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import com.github.leapoflegends.MainGame;
+import com.github.leapoflegends.entities.enemy.Enemy;
+import com.github.leapoflegends.entities.obstacle.Obstacle;
+import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
@@ -17,15 +21,17 @@ import java.util.List;
 import java.util.Set;
 
 public class Player extends DynamicRectangleEntity implements Collider, Collided, Newtonian, SceneBorderTouchingWatcher, KeyListener {
-    private int health;
+    private int health = 100;
+    private final MainGame game;
+    private final HealthText healthText;
     public double playerHeight = 32;
 
-    public Player(Coordinate2D location) {
+    public Player(Coordinate2D location, HealthText healthText, MainGame game) {
         super(location, new Size(32, 32));
         setFill(Color.RED);
         // super("FILENAME", location, new Size(16, 32), 1, 2);
-        health = 100;
-
+        this.game = game;
+        this.healthText = healthText;
         setGravityConstant(0.055);
         setFrictionConstant(0.04);
     }
@@ -36,6 +42,15 @@ public class Player extends DynamicRectangleEntity implements Collider, Collided
             if (collider instanceof GroundEntity) {
                 setMotion(0, 0);
                 break;
+            }
+            if (collider instanceof Enemy) {
+                game.setActiveScene(4);
+            }
+            else if (collider instanceof Obstacle) {
+                health -= 50;
+                if (health == 0) {
+                    game.setActiveScene(4);
+                }
             }
         }
     }
