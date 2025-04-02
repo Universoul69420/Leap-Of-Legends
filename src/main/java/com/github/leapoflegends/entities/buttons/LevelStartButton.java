@@ -21,14 +21,13 @@ public class LevelStartButton extends TextEntity implements MouseButtonPressedLi
         levelScene = levelId+4;
         this.game = game;
         setFill(Color.MAROON);
-        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 40));
+        setFont(Font.font("Comic Sans MS", FontWeight.BOLD, 40));
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         MainGame.currentLevel = levelScene-3;
         game.setActiveScene(levelScene);
-
     }
 
     @Override

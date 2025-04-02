@@ -19,7 +19,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
         super(initialLocation, "QUIT");
         this.game = game;
         setFill(Color.BLACK);
-        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 48));
+        setFont(Font.font("Comic Sans MS", FontWeight.BOLD, 32));
     }
 
     @Override

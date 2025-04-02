@@ -12,21 +12,21 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class MenuButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+    private int sceneId;
     MainGame game;
 
-    public MenuButton(Coordinate2D initialLocation, MainGame game) {
-        super(initialLocation,
-                "Menu"
-        );
+    public Button(Coordinate2D initialLocation, String text, int sceneId, MainGame game, int size) {
+        super(initialLocation, text);
+        this.sceneId = sceneId;
         this.game = game;
-        setFill(Color.BLACK);
-        setFont(Font.font("Aldo the Apache", FontWeight.BOLD, 30));
-    }
 
+        setFill(Color.BLACK);
+        setFont(Font.font("Comic Sans MS", FontWeight.BOLD, size));
+    }
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        game.setActiveScene(0);
+        game.setActiveScene(sceneId);
     }
 
     @Override
@@ -40,4 +40,6 @@ public class MenuButton extends TextEntity implements MouseButtonPressedListener
         setFill(Color.GRAY);
         setCursor(Cursor.OPEN_HAND);
     }
+
+
 }
