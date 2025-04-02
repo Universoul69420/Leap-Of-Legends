@@ -1,4 +1,4 @@
-package com.github.leapoflegends.entities;
+package com.github.leapoflegends.entities.player;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -10,7 +10,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
-import javafx.scene.DirectionalLight;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
