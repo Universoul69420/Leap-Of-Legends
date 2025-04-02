@@ -15,13 +15,14 @@ import javafx.scene.text.FontWeight;
 public class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
     private int sceneId;
     MainGame game;
+    Color color;
 
-    public Button(Coordinate2D initialLocation, String text, int sceneId, MainGame game, int size) {
+    public Button(Coordinate2D initialLocation, String text, int sceneId, MainGame game, int size, Color color) {
         super(initialLocation, text);
         this.sceneId = sceneId;
         this.game = game;
-
-        setFill(Color.BLACK);
+        this.color = color;
+        setFill(color);
         setFont(Font.font("Comic Sans MS", FontWeight.BOLD, size));
     }
     @Override
@@ -31,7 +32,7 @@ public class Button extends TextEntity implements MouseButtonPressedListener, Mo
 
     @Override
     public void onMouseExited() {
-        setFill(Color.BLACK);
+        setFill(color);
         setCursor(Cursor.DEFAULT);
     }
 

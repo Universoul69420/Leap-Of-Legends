@@ -12,6 +12,7 @@ public class Level2Scene extends DynamicScene {
     @Override
     public void setupScene() {
 
+        MainGame.currentLevel = 2;
     }
 
     @Override

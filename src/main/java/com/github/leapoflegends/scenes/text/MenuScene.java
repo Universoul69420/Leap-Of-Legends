@@ -6,6 +6,7 @@ import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.buttons.Button;
 import com.github.leapoflegends.entities.buttons.LevelStartButton;
 import com.github.leapoflegends.entities.buttons.QuitButton;
+import javafx.scene.paint.Color;
 
 public class MenuScene extends StaticScene {
     private MainGame game;
@@ -20,7 +21,7 @@ public class MenuScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var how2Play = new Button(new Coordinate2D(542, 590), "HOW TO PLAY?", 1, game, 32);
+        var how2Play = new Button(new Coordinate2D(542, 590), "HOW TO PLAY?", 1, game, 32, Color.BLACK);
         var quitButton = new QuitButton(new Coordinate2D(10, 590), game);
         var level1 = new LevelStartButton(new Coordinate2D(20, 400), 1, game);
         var level2 = new LevelStartButton(new Coordinate2D(180, 400), 2, game);

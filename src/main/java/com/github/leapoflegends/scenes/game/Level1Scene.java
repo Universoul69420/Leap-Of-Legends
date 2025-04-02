@@ -20,6 +20,7 @@ public class Level1Scene extends DynamicScene implements TileMapContainer {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/Background.png");
+        MainGame.currentLevel = 1;
     }
 
     @Override
