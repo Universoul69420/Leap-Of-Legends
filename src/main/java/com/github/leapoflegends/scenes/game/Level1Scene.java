@@ -14,6 +14,7 @@ public class Level1Scene extends DynamicScene implements TileMapContainer {
 
     public Level1Scene(MainGame game) {
         this.game = game;
+
     }
 
     @Override

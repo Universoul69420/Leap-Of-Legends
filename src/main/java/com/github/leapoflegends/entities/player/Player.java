@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
+import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.MainGame;
@@ -20,18 +21,18 @@ import javafx.scene.paint.Color;
 import java.util.List;
 import java.util.Set;
 
-public class Player extends DynamicRectangleEntity implements Collider, Collided, Newtonian, SceneBorderTouchingWatcher, KeyListener {
+public class Player extends DynamicSpriteEntity implements Collider, Collided, Newtonian, SceneBorderTouchingWatcher, KeyListener {
     private int health = 100;
     private final MainGame game;
     private final HealthText healthText;
     public double playerHeight = 32;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super(location, new Size(32, 32));
-        setFill(Color.RED);
-        // super("FILENAME", location, new Size(16, 32), 1, 2);
+        super("sprites/player.png", location, new Size(16, 32), 1, 2);
         this.game = game;
         this.healthText = healthText;
+        healthText.setText(health);
+
         setGravityConstant(0.055);
         setFrictionConstant(0.04);
     }
@@ -48,6 +49,7 @@ public class Player extends DynamicRectangleEntity implements Collider, Collided
             }
             else if (collider instanceof Obstacle) {
                 health -= 50;
+                healthText.setText(health);
                 if (health == 0) {
                     game.setActiveScene(4);
                 }
@@ -70,9 +72,11 @@ public class Player extends DynamicRectangleEntity implements Collider, Collided
     @Override
     public void onPressedKeysChange(Set<KeyCode> keys) {
         if (keys.contains(KeyCode.A)) {
+            setCurrentFrameIndex(0);
             setMotion(2, 270);
         }
         if (keys.contains(KeyCode.D)) {
+            setCurrentFrameIndex(1);
             setMotion(2, 90);
         }
         if (keys.contains(KeyCode.S)) {
