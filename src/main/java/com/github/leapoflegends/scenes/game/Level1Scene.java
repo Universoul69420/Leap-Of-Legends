@@ -10,7 +10,7 @@ import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.GroundTileMap;
 
 public class Level1Scene extends DynamicScene implements TileMapContainer {
-    private MainGame game;
+    private final MainGame game;
 
     public Level1Scene(MainGame game) {
         this.game = game;
@@ -25,7 +25,7 @@ public class Level1Scene extends DynamicScene implements TileMapContainer {
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
         var player = new Player(new Coordinate2D(500, 200), healthDisplay, game);
-        var zombie = new Zombie(new Coordinate2D(300, 10));
+        var zombie = new Zombie(new Coordinate2D(760, 400));
         addEntity(player);
         addEntity(zombie);
         addEntity(healthDisplay);

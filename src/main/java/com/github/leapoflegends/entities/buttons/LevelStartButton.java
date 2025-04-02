@@ -33,7 +33,7 @@ public class LevelStartButton extends TextEntity implements MouseButtonPressedLi
     @Override
     public void onMouseEntered() {
         setFill(Color.BLACK);
-        setCursor(Cursor.CROSSHAIR);
+        setCursor(Cursor.HAND);
     }
 
     @Override
