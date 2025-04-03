@@ -54,7 +54,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             if (collider instanceof Enemy) {
                 health -= ((Enemy) collider).getDamage();
                 healthText.setText(health);
-                if (health == 0) {
+                if (health <= 0) {
                     game.setActiveScene(4);
                 }
             }
