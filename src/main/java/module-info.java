@@ -9,4 +9,5 @@ module leapoflegends {
 
     opens backgrounds;
     opens sprites;
+    exports com.github.leapoflegends.tilemaps;
 }

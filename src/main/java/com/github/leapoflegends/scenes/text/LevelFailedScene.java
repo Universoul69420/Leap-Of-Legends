@@ -21,7 +21,7 @@ public class LevelFailedScene extends StaticScene {
     @Override
     public void setupEntities() {
         var menu = new Button(new Coordinate2D(550, 360), "MENU", 0, game, 36, Color.BLACK);
-        var retry = new Button(new Coordinate2D(550, 460), "Retry", 5, game, 36, Color.BLACK);
+        var retry = new Button(new Coordinate2D(550, 460), "Retry", MainGame.currentLevel+4, game, 36, Color.BLACK);
         addEntity(menu);
         addEntity(retry);
     }

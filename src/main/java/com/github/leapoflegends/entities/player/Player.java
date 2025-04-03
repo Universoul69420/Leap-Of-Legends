@@ -14,6 +14,7 @@ import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
+import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
 import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
 import javafx.scene.input.KeyCode;
 
@@ -28,7 +29,7 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
     boolean jumpCooldown = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super("sprites/player.png", location, new Size(32, 32), 1, 2);
+        super("sprites/player.png", location, new Size(20, 20), 1, 2);
         this.game = game;
         this.healthText = healthText;
         healthText.setText(health);
@@ -44,7 +45,7 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
                 setMotion(0, 0);
                 break;
             }
-            if (collider instanceof Enemy) {
+            if (collider instanceof Enemy || collider instanceof LavaSourceEntity) {
                 game.setActiveScene(4);
             }
             if (collider instanceof LevelFinishEntity) {
