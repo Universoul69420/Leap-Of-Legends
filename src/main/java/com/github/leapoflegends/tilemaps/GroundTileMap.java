@@ -5,22 +5,17 @@ import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
 import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
 
+import com.github.leapoflegends.tilemaps.TileSizeUtil;
 
 public class GroundTileMap extends TileMap {
-    private static Size calculatedTileSize;
-
-    public void setSceneWidth(double sceneWidth) {
-        int columns = defineMap()[0].length;
-        double tileWidth = sceneWidth / columns;
-        double tileHeight = tileWidth;
-        calculatedTileSize = new Size(tileWidth, tileHeight);
-    }
+    private static Size tileSize;
 
     @Override
     public void setupEntities() {
+        tileSize = new Size(TileSizeUtil.getTileSize(), TileSizeUtil.getTileSize());
 
-        addEntity(1, GroundEntity.class, calculatedTileSize);
-        addEntity(2, LevelFinishEntity.class, calculatedTileSize);
+        addEntity(1, GroundEntity.class, tileSize);
+        addEntity(2, LevelFinishEntity.class, tileSize);
     }
 
     @Override
@@ -46,8 +41,5 @@ public class GroundTileMap extends TileMap {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
-    }
-    public static Size getCalculatedTileSize() {
-        return calculatedTileSize;
     }
 }
