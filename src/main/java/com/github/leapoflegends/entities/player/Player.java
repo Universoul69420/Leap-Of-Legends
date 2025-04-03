@@ -16,9 +16,9 @@ import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.TileSizeUtil;
+import com.github.leapoflegends.tilemaps.entities.BlockEntity;
 import com.github.leapoflegends.tilemaps.entities.BushObstacleEntity;
-import com.github.leapoflegends.tilemaps.entities.GroundEntity;
-import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
+import com.github.leapoflegends.tilemaps.entities.LevelContinueEntity;
 import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
 import javafx.scene.input.KeyCode;
 
@@ -47,8 +47,8 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     public void onCollision(List<Collider> colliders) {
 
         for (Collider collider : colliders) {
-            if (collider instanceof GroundEntity) {
-                handleGroundCollision((GroundEntity) collider);
+            if (collider instanceof BlockEntity) {
+                handleGroundCollision((BlockEntity) collider);
                 contact = true;
             }
             if (collider instanceof Enemy) {
@@ -61,18 +61,21 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             if (collider instanceof LevelFinishEntity) {
                 game.setActiveScene(2);
             }
+            if (collider instanceof LevelContinueEntity) {
+                game.setActiveScene(MainGame.currentLevel+9);
+            }
             if (collider instanceof BushObstacleEntity) {
                 health -= 50;
                 ((BushObstacleEntity) collider).remove();
                 healthText.setText(health);
-                if (health == 0) {
+                if (health <= 0) {
                     game.setActiveScene(4);
                 }
             }
         }
     }
 
-    private void handleGroundCollision(GroundEntity ground) {
+    private void handleGroundCollision(BlockEntity ground) {
         var playerBox = getBoundingBox();
         var groundBox = ground.getBoundingBox();
 
@@ -82,29 +85,29 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
         if (overlapX < overlapY) {
             if (playerBox.getMaxX() > groundBox.getMinX() && playerBox.getMinX() < groundBox.getMinX()) {
                 setAnchorLocationX(groundBox.getMinX() - getWidth() - 1);
-                System.out.println("xmaxplayer: " + playerBox.getMaxX());
-                System.out.println("xminplayer: " + playerBox.getMinX());
-                System.out.println("Xmaxground: " + groundBox.getMaxX());
-                System.out.println("XmINground: " + groundBox.getMinX());
-                System.out.println("Ymaxplayer: " + playerBox.getMaxY());
-                System.out.println("Yminplayer: " + playerBox.getMinY());
-                System.out.println("Ymaxground: " + groundBox.getMaxY());
-                System.out.println("YmINground: " + groundBox.getMinY());
+//                System.out.println("xmaxplayer: " + playerBox.getMaxX());
+//                System.out.println("xminplayer: " + playerBox.getMinX());
+//                System.out.println("Xmaxground: " + groundBox.getMaxX());
+//                System.out.println("XmINground: " + groundBox.getMinX());
+//                System.out.println("Ymaxplayer: " + playerBox.getMaxY());
+//                System.out.println("Yminplayer: " + playerBox.getMinY());
+//                System.out.println("Ymaxground: " + groundBox.getMaxY());
+//                System.out.println("YmINground: " + groundBox.getMinY());
 
             } else if (playerBox.getMinX() < groundBox.getMaxX() && playerBox.getMaxX() > groundBox.getMaxX()) {
                 setAnchorLocationX(groundBox.getMaxX() + 1);
-                System.out.println("Collision detected: Right");
+//                System.out.println("Collision detected: Right");
             }
         } else {
             if (playerBox.getMaxY() > groundBox.getMinY() && playerBox.getMinY() < groundBox.getMinY()) {
                 setAnchorLocationY(groundBox.getMinY() - 31.3);
                 isOnGround = true; // Set isOnGround to true when a top collision is detected
                 jumpCooldown = false; // Reset jump cooldown
-                System.out.println("Collision detected: Top");
+//                System.out.println("Collision detected: Top");
                 setMotion(0, 0); // Reset vertical speed
             } else if (playerBox.getMinY() < groundBox.getMaxY() && playerBox.getMaxY() > groundBox.getMaxY()) {
                 setAnchorLocationY(groundBox.getMaxY() + 2);
-                System.out.println("Collision detected: Bottom");
+//                System.out.println("Collision detected: Bottom");
                 setMotion(0, 0); // Reset vertical speed
             }
         }
@@ -138,7 +141,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                 if (!jumpCooldown) {
                     double currentSpeed = (getSpeed() * 2);
                     double currentDirection = getDirection();
-                    double jumpSpeed = 8;
+                    double jumpSpeed = 6;
                     double jumpDirection = 180;
 
                     double combinedSpeed = Math.sqrt(Math.pow(currentSpeed, 2) + Math.pow(jumpSpeed, 2));
