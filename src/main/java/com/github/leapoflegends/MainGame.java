@@ -37,6 +37,12 @@ public class MainGame extends YaegerGame {
         addScene(8, new Level4Scene(this));
         addScene(9, new Level5Scene(this));
 
+        addScene(10, new Level1Scene2(this));
+        addScene(11, new Level2Scene2(this));
+        addScene(12, new Level3Scene2(this));
+        addScene(13, new Level4Scene2(this));
+        addScene(14, new Level5Scene2(this));
+
         setActiveScene(0);
     }
 }

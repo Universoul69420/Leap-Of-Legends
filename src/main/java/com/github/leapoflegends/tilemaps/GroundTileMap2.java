@@ -12,11 +12,11 @@ public class GroundTileMap2 extends TileMap {
     public void setupEntities() {
         tileSize = new Size(TileSizeUtil.getTileSize(), TileSizeUtil.getTileSize());
 
-        addEntity(1, GroundEntity.class, tileSize);
+        addEntity(1, BlockEntity.class, tileSize);
         addEntity(2, LevelFinishEntity.class, tileSize);
         addEntity(3, LavaSourceEntity.class, tileSize);
         addEntity(4, BushObstacleEntity.class, tileSize);
-        addEntity(8, GrassEntity.class, tileSize);
+        addEntity(8, DirtEntity.class, tileSize);
     }
 
     @Override

@@ -5,8 +5,9 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
-public class PoisonGroundEntity extends SpriteEntity implements Collider {
-    public PoisonGroundEntity(final Coordinate2D location, final Size size, final Size tileSize) {
-        super("sprites/poisongrass.png", location, tileSize);
+    public class DirtEntity extends SpriteEntity implements Collider {
+
+        public DirtEntity(final Coordinate2D location, final Size size, final Size tileSize) {
+            super("sprites/World-Tiles1.png", location, tileSize);
+        }
     }
-}

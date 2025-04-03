@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.leapoflegends.tilemaps.entities.GroundEntity;
+import com.github.leapoflegends.tilemaps.entities.BlockEntity;
 import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class Zombie extends Enemy {
     @Override
     public void onCollision(List<Collider> collidingEntity) {
         for (Collider collider : collidingEntity) {
-            if (collider instanceof GroundEntity) {
+            if (collider instanceof BlockEntity) {
                 setMotion(0, Direction.DOWN);
                 setMotion(2, Direction.LEFT);
             }

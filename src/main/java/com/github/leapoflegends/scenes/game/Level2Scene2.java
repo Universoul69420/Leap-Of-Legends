@@ -4,40 +4,37 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.leapoflegends.MainGame;
-import com.github.leapoflegends.entities.enemy.Enemy;
-import com.github.leapoflegends.entities.enemy.Snake;
 import com.github.leapoflegends.entities.enemy.Zombie;
 import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.GroundTileMap4;
+import com.github.leapoflegends.tilemaps.GroundTileMap2;
 
-public class Level4Scene extends DynamicScene implements TileMapContainer {
+public class Level2Scene2 extends DynamicScene implements TileMapContainer {
     private final MainGame game;
 
-    public Level4Scene(MainGame game) {
+    public Level2Scene2(MainGame game) {
         this.game = game;
 
     }
 
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/purplebackground.png");
-        MainGame.currentLevel = 4;
+        setBackgroundImage("backgrounds/Background.png");
+        MainGame.currentLevel = 2;
     }
-
 
     @Override
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        var player = new Player(new Coordinate2D(10, 300), healthDisplay, game);
-        Enemy snake = new Snake(new Coordinate2D(760, 400));
+        var player = new Player(new Coordinate2D(500, 200), healthDisplay, game);
+        var zombie = new Zombie(new Coordinate2D(760, 400));
         addEntity(player);
-        addEntity(snake);
         addEntity(healthDisplay);
     }
 
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap4();
+        var groundScreenMap = new GroundTileMap2();
         addTileMap(groundScreenMap);
     }
 }
+

@@ -13,13 +13,8 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Enemy;
-import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.TileSizeUtil;
-import com.github.leapoflegends.tilemaps.entities.BushObstacleEntity;
-import com.github.leapoflegends.tilemaps.entities.GroundEntity;
-import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
-import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
+import com.github.leapoflegends.tilemaps.entities.*;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
@@ -47,8 +42,8 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     public void onCollision(List<Collider> colliders) {
 
         for (Collider collider : colliders) {
-            if (collider instanceof GroundEntity) {
-                handleGroundCollision((GroundEntity) collider);
+            if (collider instanceof BlockEntity) {
+                handleGroundCollision((BlockEntity) collider);
                 contact = true;
             }
             if (collider instanceof Enemy) {
@@ -61,6 +56,9 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             if (collider instanceof LevelFinishEntity) {
                 game.setActiveScene(2);
             }
+            if (collider instanceof LevelContinueEntity) {
+                game.setActiveScene(MainGame.currentLevel+9);
+            }
             if (collider instanceof BushObstacleEntity) {
                 health -= 50;
                 ((BushObstacleEntity) collider).remove();
@@ -72,7 +70,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
         }
     }
 
-    private void handleGroundCollision(GroundEntity ground) {
+    private void handleGroundCollision(BlockEntity ground) {
         var playerBox = getBoundingBox();
         var groundBox = ground.getBoundingBox();
 
