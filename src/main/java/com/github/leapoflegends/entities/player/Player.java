@@ -29,6 +29,7 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
     private final HealthText healthText;
     private boolean jumpCooldown = false;
     private boolean isOnGround = false;
+    private boolean contact = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
         super("sprites/player.png", location, new Size(20, 19), 1, 2);
@@ -46,9 +47,14 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
         for (Collider collider : colliders) {
             if (collider instanceof GroundEntity) {
                 handleGroundCollision((GroundEntity) collider);
+                contact = true;
             }
             if (collider instanceof Enemy) {
-                game.setActiveScene(4);
+                health -= ((Enemy) collider).getDamage();
+                healthText.setText(health);
+                if (health == 0) {
+                    game.setActiveScene(4);
+                }
             }
             if (collider instanceof LevelFinishEntity) {
                 game.setActiveScene(2);
