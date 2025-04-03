@@ -47,7 +47,7 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
             if (collider instanceof GroundEntity) {
                 handleGroundCollision((GroundEntity) collider);
             }
-            if (collider instanceof Enemy || collider instanceof LavaSourceEntity) {
+            if (collider instanceof Enemy) {
                 game.setActiveScene(4);
             }
             if (collider instanceof LevelFinishEntity) {

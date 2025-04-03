@@ -11,7 +11,7 @@ import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
 import java.util.List;
 public class Zombie extends Enemy {
     public Zombie(Coordinate2D initialLocation) {
-        super("sprites/zombie.png", initialLocation, new Size(16, 32));
+        super("sprites/zombie.png", initialLocation, new Size(16, 32), 100);
         setMotion(2, Direction.LEFT);
 
     }

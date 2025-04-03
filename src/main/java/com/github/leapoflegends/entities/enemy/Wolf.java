@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Wolf extends Enemy{
     public Wolf(Coordinate2D initialLocation) {
-        super("sprites/zombie.png", initialLocation, new Size(16, 32));
+        super("sprites/zombie.png", initialLocation, new Size(16, 32), 70);
     }
 
     @Override

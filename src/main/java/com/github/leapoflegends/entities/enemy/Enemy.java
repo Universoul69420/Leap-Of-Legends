@@ -9,9 +9,13 @@ import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 public abstract class Enemy extends DynamicSpriteEntity implements Collider, Collided, SceneBorderCrossingWatcher {
-
-    protected Enemy(String resource, Coordinate2D initialLocation, Size size) {
+    private int damage;
+    protected Enemy(String resource, Coordinate2D initialLocation, Size size, int damage) {
         super(resource, initialLocation, size);
+        this.damage = damage;
+    }
 
+    public int getDamage() {
+        return damage;
     }
 }

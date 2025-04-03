@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Snake extends Enemy{
     public Snake(Coordinate2D initialLocation) {
-        super("sprites/zombie.png", initialLocation, new Size(16, 32));
+        super("sprites/zombie.png", initialLocation, new Size(16, 32), 60);
     }
 
     @Override
