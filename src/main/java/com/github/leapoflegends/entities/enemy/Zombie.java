@@ -13,7 +13,8 @@ public class Zombie extends Enemy {
     public Zombie(Coordinate2D initialLocation) {
         super("sprites/zombie.png", initialLocation, new Size(16, 32), 100);
         setMotion(2, Direction.LEFT);
-
+        setGravityConstant(0.055);
+        setFrictionConstant(0.04);
     }
 
     @Override

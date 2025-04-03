@@ -34,7 +34,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     private boolean contact = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super("sprites/player.png", location, new Size(20, 19), 1, 2);
+        super("sprites/player.png", location, new Size(32, 31), 1, 2);
         this.game = game;
         this.healthText = healthText;
         healthText.setText(health);
@@ -97,7 +97,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             }
         } else {
             if (playerBox.getMaxY() > groundBox.getMinY() && playerBox.getMinY() < groundBox.getMinY()) {
-                setAnchorLocationY(groundBox.getMinY() - 20.3);
+                setAnchorLocationY(groundBox.getMinY() - 31.3);
                 isOnGround = true; // Set isOnGround to true when a top collision is detected
                 jumpCooldown = false; // Reset jump cooldown
                 System.out.println("Collision detected: Top");

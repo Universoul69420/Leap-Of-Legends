@@ -19,7 +19,7 @@ public class MainGame extends YaegerGame {
     public void setupGame() {
         setGameTitle("Leap of Legends");
         setSize(new Size(800, 640));
-        TileSizeUtil.setTileSize(20);
+        TileSizeUtil.setTileSize(32);
     }
 
 

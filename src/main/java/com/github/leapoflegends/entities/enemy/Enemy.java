@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
-public abstract class Enemy extends DynamicSpriteEntity implements Collider, Collided, SceneBorderCrossingWatcher {
+public abstract class Enemy extends DynamicSpriteEntity implements Collider, Collided, Newtonian,SceneBorderCrossingWatcher {
     private int damage;
     protected Enemy(String resource, Coordinate2D initialLocation, Size size, int damage) {
         super(resource, initialLocation, size);
