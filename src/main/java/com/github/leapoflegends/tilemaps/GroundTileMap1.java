@@ -2,20 +2,21 @@ package com.github.leapoflegends.tilemaps;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.TileMap;
-import com.github.leapoflegends.tilemaps.entities.DirtEntity;
-import com.github.leapoflegends.tilemaps.entities.BlockEntity;
+import com.github.leapoflegends.tilemaps.entities.GrassEntity;
+import com.github.leapoflegends.tilemaps.entities.GroundEntity;
 import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
+import com.github.leapoflegends.tilemaps.entities.LevelProgressEntity;
 
-public class GroundTileMap extends TileMap {
+public class GroundTileMap1 extends TileMap {
     private static Size tileSize;
 
     @Override
     public void setupEntities() {
         tileSize = new Size(TileSizeUtil.getTileSize(), TileSizeUtil.getTileSize());
 
-        addEntity(1, BlockEntity.class, tileSize);
-        addEntity(2, LevelFinishEntity.class, tileSize);
-        addEntity(8, DirtEntity.class, tileSize);
+        addEntity(1, GroundEntity.class, tileSize);
+        addEntity(3, LevelProgressEntity.class, tileSize);
+        addEntity(8, GrassEntity.class, tileSize);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class GroundTileMap extends TileMap {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                 {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                 {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
