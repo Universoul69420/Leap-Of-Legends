@@ -16,14 +16,13 @@ import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.TileSizeUtil;
-import com.github.leapoflegends.tilemaps.entities.BushObstacleEntity;
-import com.github.leapoflegends.tilemaps.entities.GroundEntity;
-import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
-import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
+import com.github.leapoflegends.tilemaps.entities.*;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
 import java.util.Set;
+
+import static com.github.leapoflegends.MainGame.currentLevel;
 
 public class Player extends DynamicSpriteEntity implements TimerContainer, Collided, Newtonian, SceneBorderTouchingWatcher, KeyListener {
     private int health = 100;
@@ -60,6 +59,9 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             }
             if (collider instanceof LevelFinishEntity) {
                 game.setActiveScene(2);
+            }
+            if (collider instanceof LevelProgressEntity) {
+                game.setActiveScene((currentLevel + 5));
             }
             if (collider instanceof BushObstacleEntity) {
                 health -= 50;
@@ -113,27 +115,17 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         if (sceneBorder == SceneBorder.LEFT) {
-            setAnchorLocationX(0);
+            setAnchorLocationX(1);
         } else if (sceneBorder == SceneBorder.TOP) {
-            setAnchorLocationY(0);
+            setAnchorLocationY(1);
+        } else if (sceneBorder == SceneBorder.RIGHT) {
+            game.setActiveScene(currentLevel + 5);
         }
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> keys) {
         if (isOnGround) {
-            if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
-                setCurrentFrameIndex(0);
-                setMotion(2, 270);
-            }
-            if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
-                setCurrentFrameIndex(1);
-                setMotion(2, 90);
-            }
-            if (keys.contains(KeyCode.S)) {
-                setMotion(2, 270);
-            }
-
             if (keys.contains(KeyCode.SPACE)) {
                 if (!jumpCooldown) {
                     double currentSpeed = (getSpeed() * 2);
@@ -151,7 +143,19 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                     jumpCooldown = true;
                 }
             }
+            if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
+                setCurrentFrameIndex(0);
+                setMotion(2, 270);
+            }
+            if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
+                setCurrentFrameIndex(1);
+                setMotion(2, 90);
+            }
+            if (keys.contains(KeyCode.S)) {
+                setMotion(2, 270);
+            }
         }
+
     }
 
     @Override

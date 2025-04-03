@@ -1,8 +1,6 @@
 package com.github.leapoflegends.scenes.game;
 
-import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
+import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.scenes.ScrollableDynamicScene;
 import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
@@ -18,7 +16,7 @@ import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.Set;
 
-public class Level3Scene extends ScrollableDynamicScene implements TileMapContainer {
+public class Level3Scene extends ScrollableDynamicScene implements TileMapContainer, TimerContainer {
     private MainGame game;
     double scroll = 0;
     private boolean jumpCooldown = false;
@@ -73,6 +71,16 @@ public class Level3Scene extends ScrollableDynamicScene implements TileMapContai
     }
     public double getPlayerAvX() {
         return (getPlayerMaxX()+getPlayerMinX())/2;
+    }
+
+    @Override
+    public void setupTimers() {
+        addTimer(new Timer(1) { // Timer that runs every 100 milliseconds
+            @Override
+            public void onAnimationUpdate(long timestamp) {
+                setHorizontalScrollPosition(getPlayerAvX() - 300);
+            }
+        });
     }
 
 //    @Override
