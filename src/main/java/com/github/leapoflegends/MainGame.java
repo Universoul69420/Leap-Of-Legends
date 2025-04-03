@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.api.Size;
 import com.github.leapoflegends.scenes.game.*;
 import com.github.leapoflegends.scenes.text.*;
+import com.github.leapoflegends.tilemaps.TileSizeUtil;
 
 public class MainGame extends YaegerGame {
 
@@ -18,6 +19,7 @@ public class MainGame extends YaegerGame {
     public void setupGame() {
         setGameTitle("Leap of Legends");
         setSize(new Size(800, 640));
+        TileSizeUtil.setTileSize(32);
     }
 
 
@@ -35,6 +37,6 @@ public class MainGame extends YaegerGame {
         addScene(8, new Level4Scene(this));
         addScene(9, new Level5Scene(this));
 
-        setActiveScene(0);
+        setActiveScene(5);
     }
 }

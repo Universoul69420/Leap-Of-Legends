@@ -23,6 +23,7 @@ public class Level1Scene extends DynamicScene implements TileMapContainer {
         MainGame.currentLevel = 1;
     }
 
+
     @Override
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));

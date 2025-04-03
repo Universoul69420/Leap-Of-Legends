@@ -13,6 +13,7 @@ import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
+import com.github.leapoflegends.tilemaps.TileSizeUtil;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
 import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
 import javafx.scene.input.KeyCode;
@@ -24,11 +25,11 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
     private int health = 100;
     private final MainGame game;
     private final HealthText healthText;
-    public double playerHeight = 32;
-    boolean jumpCooldown = false;
+    private boolean jumpCooldown = false;
+    private boolean isOnGround = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super("sprites/player.png", location, new Size(32, 32), 1, 2);
+        super("sprites/player.png", location, new Size(TileSizeUtil.getTileSize(), (TileSizeUtil.getTileSize() * 2)), 1, 2);
         this.game = game;
         this.healthText = healthText;
         healthText.setText(health);
@@ -39,10 +40,10 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
 
     @Override
     public void onCollision(List<Collider> colliders) {
+
         for (Collider collider : colliders) {
             if (collider instanceof GroundEntity) {
-                setMotion(0, 0);
-                break;
+                handleGroundCollision((GroundEntity) collider);
             }
             if (collider instanceof Enemy) {
                 game.setActiveScene(4);
@@ -60,8 +61,35 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
         }
     }
 
+    private void handleGroundCollision(GroundEntity ground) {
+        var playerBox = getBoundingBox();
+        var groundBox = ground.getBoundingBox();
 
+        double overlapX = Math.min(playerBox.getMaxX() - groundBox.getMinX(), groundBox.getMaxX() - playerBox.getMinX());
+        double overlapY = Math.min(playerBox.getMaxY() - groundBox.getMinY(), groundBox.getMaxY() - playerBox.getMinY());
 
+        if (overlapX < overlapY) {
+            if (playerBox.getMaxX() > groundBox.getMinX() && playerBox.getMinX() < groundBox.getMinX()) {
+                setAnchorLocationX(groundBox.getMinX() - getWidth() - 1);
+                System.out.println("Collision detected: Left");
+            } else if (playerBox.getMinX() < groundBox.getMaxX() && playerBox.getMaxX() > groundBox.getMaxX()) {
+                setAnchorLocationX(groundBox.getMaxX() + 1);
+                System.out.println("Collision detected: Right");
+            }
+        } else {
+            if (playerBox.getMaxY() > groundBox.getMinY() && playerBox.getMinY() < groundBox.getMinY()) {
+                setAnchorLocationY(groundBox.getMinY() - getHeight());
+                isOnGround = true; // Set isOnGround to true when a top collision is detected
+                jumpCooldown = false; // Reset jump cooldown
+                System.out.println("Collision detected: Top");
+                setMotion(0, 0); // Reset vertical speed
+            } else if (playerBox.getMinY() < groundBox.getMaxY() && playerBox.getMaxY() > groundBox.getMaxY()) {
+                setAnchorLocationY(groundBox.getMaxY() + 2);
+                System.out.println("Collision detected: Bottom");
+                setMotion(0, 0); // Reset vertical speed
+            }
+        }
+    }
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
@@ -74,41 +102,35 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> keys) {
-        if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
-            setCurrentFrameIndex(0);
-            setMotion(2, 270);
-        }
-        if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
-            setCurrentFrameIndex(1);
-            setMotion(2, 90);
-        }
-        if (keys.contains(KeyCode.S)) {
-            setMotion(2, 270);
-        }
-        if (keys.contains(KeyCode.SPACE) && !keys.contains(KeyCode.D) && !keys.contains(KeyCode.A)) {
-            if (!jumpCooldown) {
-            setMotion(2, 180);
-            setGravityConstant(0.055);
-
-            jumpCooldown = true;
-            setJumpCooldown();
-
+        if (isOnGround) {
+            if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
+                setCurrentFrameIndex(0);
+                setMotion(2, 270);
+            }
+            if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
+                setCurrentFrameIndex(1);
+                setMotion(2, 90);
+            }
+            if (keys.contains(KeyCode.S)) {
+                setMotion(2, 270);
             }
         }
-//        if (keys.contains(KeyCode.SPACE) && (keys.contains(KeyCode.D))) {
-//            setMotion(2, 155);
-//        }
-//        if (keys.contains(KeyCode.SPACE) && (keys.contains(KeyCode.A))) {
-//            setMotion(2, 205);
-//        }
-    }
-    public void setJumpCooldown() {
-        long prevTime = 0;
-        long currentTime = System.currentTimeMillis();
-        if (currentTime > 20000 + prevTime) {
-            jumpCooldown = false;
-            System.out.println("jooo");
-            prevTime = currentTime;
+        if (keys.contains(KeyCode.SPACE)) {
+            if (!jumpCooldown) {
+                double currentSpeed = (getSpeed() * 2);
+                double currentDirection = getDirection();
+                double jumpSpeed = 8;
+                double jumpDirection = 180;
+
+                double combinedSpeed = Math.sqrt(Math.pow(currentSpeed, 2) + Math.pow(jumpSpeed, 2));
+                double combinedDirection = Math.toDegrees(Math.atan2(Math.sin(Math.toRadians(jumpDirection)) * jumpSpeed + Math.sin(Math.toRadians(currentDirection)) * currentSpeed,
+                        Math.cos(Math.toRadians(jumpDirection)) * jumpSpeed + Math.cos(Math.toRadians(currentDirection)) * currentSpeed));
+
+                setMotion(combinedSpeed, combinedDirection);
+
+                isOnGround = false;
+                jumpCooldown = true;
+            }
         }
     }
 }
