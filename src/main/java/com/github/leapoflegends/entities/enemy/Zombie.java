@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
+import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
 
 import java.util.List;
 public class Zombie extends Enemy {
@@ -21,6 +22,12 @@ public class Zombie extends Enemy {
         for (Collider collider : collidingEntity) {
             if (collider instanceof GroundEntity) {
                 setMotion(0, Direction.DOWN);
+                setMotion(2, Direction.LEFT);
+            }
+            if (collider instanceof LavaSourceEntity) {
+                setAnchorLocation(new Coordinate2D(800, 400));
+            }
+            else {
                 setMotion(2, Direction.LEFT);
             }
         }

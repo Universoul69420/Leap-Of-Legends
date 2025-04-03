@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class LavaSourceEntity extends SpriteEntity implements Collider {
-    public LavaSourceEntity(Coordinate2D initialLocation, final Size size) {
+    public LavaSourceEntity(Coordinate2D initialLocation, final Size size, final Size tileSize) {
         super("sprites/lava.png", initialLocation, size);
     }
 }

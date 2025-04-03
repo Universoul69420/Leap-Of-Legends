@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class BushObstacleEntity extends SpriteEntity implements Collider {
-    public BushObstacleEntity(Coordinate2D initialLocation, final Size size) {
+    public BushObstacleEntity(Coordinate2D initialLocation, final Size size, final Size tileSize) {
         super("sprites/bush.png", initialLocation, size);
     }
 }

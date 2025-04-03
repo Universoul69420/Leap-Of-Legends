@@ -14,7 +14,9 @@ import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.TileSizeUtil;
+import com.github.leapoflegends.tilemaps.entities.BushObstacleEntity;
 import com.github.leapoflegends.tilemaps.entities.GroundEntity;
+import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
 import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
 import javafx.scene.input.KeyCode;
 
@@ -29,7 +31,7 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
     private boolean isOnGround = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super("sprites/player.png", location, new Size(TileSizeUtil.getTileSize(), (TileSizeUtil.getTileSize() * 2)), 1, 2);
+        super("sprites/player.png", location, new Size(20, 20), 1, 2);
         this.game = game;
         this.healthText = healthText;
         healthText.setText(health);
@@ -45,14 +47,15 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
             if (collider instanceof GroundEntity) {
                 handleGroundCollision((GroundEntity) collider);
             }
-            if (collider instanceof Enemy) {
+            if (collider instanceof Enemy || collider instanceof LavaSourceEntity) {
                 game.setActiveScene(4);
             }
             if (collider instanceof LevelFinishEntity) {
                 game.setActiveScene(2);
             }
-            if (collider instanceof Obstacle) {
+            if (collider instanceof BushObstacleEntity) {
                 health -= 50;
+                ((BushObstacleEntity) collider).remove();
                 healthText.setText(health);
                 if (health == 0) {
                     game.setActiveScene(4);
