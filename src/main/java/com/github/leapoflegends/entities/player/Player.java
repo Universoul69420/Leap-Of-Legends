@@ -31,7 +31,7 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
     private boolean isOnGround = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super("sprites/player.png", location, new Size(20, 20), 1, 2);
+        super("sprites/player.png", location, new Size(20, 19), 1, 2);
         this.game = game;
         this.healthText = healthText;
         healthText.setText(health);
@@ -74,14 +74,22 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
         if (overlapX < overlapY) {
             if (playerBox.getMaxX() > groundBox.getMinX() && playerBox.getMinX() < groundBox.getMinX()) {
                 setAnchorLocationX(groundBox.getMinX() - getWidth() - 1);
-                System.out.println("Collision detected: Left");
+                System.out.println("xmaxplayer: " + playerBox.getMaxX());
+                System.out.println("xminplayer: " + playerBox.getMinX());
+                System.out.println("Xmaxground: " + groundBox.getMaxX());
+                System.out.println("XmINground: " + groundBox.getMinX());
+                System.out.println("Ymaxplayer: " + playerBox.getMaxY());
+                System.out.println("Yminplayer: " + playerBox.getMinY());
+                System.out.println("Ymaxground: " + groundBox.getMaxY());
+                System.out.println("YmINground: " + groundBox.getMinY());
+
             } else if (playerBox.getMinX() < groundBox.getMaxX() && playerBox.getMaxX() > groundBox.getMaxX()) {
                 setAnchorLocationX(groundBox.getMaxX() + 1);
                 System.out.println("Collision detected: Right");
             }
         } else {
             if (playerBox.getMaxY() > groundBox.getMinY() && playerBox.getMinY() < groundBox.getMinY()) {
-                setAnchorLocationY(groundBox.getMinY() - getHeight());
+                setAnchorLocationY(groundBox.getMinY() - 20.3);
                 isOnGround = true; // Set isOnGround to true when a top collision is detected
                 jumpCooldown = false; // Reset jump cooldown
                 System.out.println("Collision detected: Top");

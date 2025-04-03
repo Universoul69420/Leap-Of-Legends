@@ -8,6 +8,6 @@ import com.github.leapoflegends.MainGame;
 
 public class GroundEntity extends SpriteEntity implements Collider {
     public GroundEntity(final Coordinate2D location, final Size size, final Size tileSize) {
-        super("sprites/grass.png", location, size);
+        super("sprites/grass.png", location, tileSize);
     }
 }

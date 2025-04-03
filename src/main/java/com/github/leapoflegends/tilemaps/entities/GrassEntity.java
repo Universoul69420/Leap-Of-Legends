@@ -8,6 +8,6 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
     public class GrassEntity extends SpriteEntity implements Collider {
 
         public GrassEntity(final Coordinate2D location, final Size size, final Size tileSize) {
-            super("sprites/World-Tiles1.png", location, size);
+            super("sprites/World-Tiles1.png", location, tileSize);
         }
     }
