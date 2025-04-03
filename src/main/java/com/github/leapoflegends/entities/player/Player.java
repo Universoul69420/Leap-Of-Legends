@@ -2,6 +2,8 @@ package com.github.leapoflegends.entities.player;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.Timer;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Newtonian;
@@ -23,7 +25,7 @@ import javafx.scene.input.KeyCode;
 import java.util.List;
 import java.util.Set;
 
-public class Player extends DynamicSpriteEntity implements Collider, Collided, Newtonian, SceneBorderTouchingWatcher, KeyListener {
+public class Player extends DynamicSpriteEntity implements TimerContainer, Collided, Newtonian, SceneBorderTouchingWatcher, KeyListener {
     private int health = 100;
     private final MainGame game;
     private final HealthText healthText;
@@ -125,23 +127,34 @@ public class Player extends DynamicSpriteEntity implements Collider, Collided, N
             if (keys.contains(KeyCode.S)) {
                 setMotion(2, 270);
             }
-        }
-        if (keys.contains(KeyCode.SPACE)) {
-            if (!jumpCooldown) {
-                double currentSpeed = (getSpeed() * 2);
-                double currentDirection = getDirection();
-                double jumpSpeed = 8;
-                double jumpDirection = 180;
 
-                double combinedSpeed = Math.sqrt(Math.pow(currentSpeed, 2) + Math.pow(jumpSpeed, 2));
-                double combinedDirection = Math.toDegrees(Math.atan2(Math.sin(Math.toRadians(jumpDirection)) * jumpSpeed + Math.sin(Math.toRadians(currentDirection)) * currentSpeed,
-                        Math.cos(Math.toRadians(jumpDirection)) * jumpSpeed + Math.cos(Math.toRadians(currentDirection)) * currentSpeed));
+            if (keys.contains(KeyCode.SPACE)) {
+                if (!jumpCooldown) {
+                    double currentSpeed = (getSpeed() * 2);
+                    double currentDirection = getDirection();
+                    double jumpSpeed = 8;
+                    double jumpDirection = 180;
 
-                setMotion(combinedSpeed, combinedDirection);
+                    double combinedSpeed = Math.sqrt(Math.pow(currentSpeed, 2) + Math.pow(jumpSpeed, 2));
+                    double combinedDirection = Math.toDegrees(Math.atan2(Math.sin(Math.toRadians(jumpDirection)) * jumpSpeed + Math.sin(Math.toRadians(currentDirection)) * currentSpeed,
+                            Math.cos(Math.toRadians(jumpDirection)) * jumpSpeed + Math.cos(Math.toRadians(currentDirection)) * currentSpeed));
 
-                isOnGround = false;
-                jumpCooldown = true;
+                    setMotion(combinedSpeed, combinedDirection);
+
+                    isOnGround = false;
+                    jumpCooldown = true;
+                }
             }
         }
+    }
+
+    @Override
+    public void setupTimers() {
+        addTimer(new Timer(100) { // Timer that runs every 100 milliseconds
+            @Override
+            public void onAnimationUpdate(long timestamp) {
+                isOnGround = false;
+            }
+        });
     }
 }
