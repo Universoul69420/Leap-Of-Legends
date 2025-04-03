@@ -2,10 +2,9 @@ package com.github.leapoflegends.tilemaps;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.TileMap;
-import com.github.leapoflegends.tilemaps.entities.GrassEntity;
-import com.github.leapoflegends.tilemaps.entities.GroundEntity;
-import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
-import com.github.leapoflegends.tilemaps.entities.LevelProgressEntity;
+import com.github.leapoflegends.tilemaps.entities.GrassBlockEntity;
+import com.github.leapoflegends.tilemaps.entities.DirtEntity;
+import com.github.leapoflegends.tilemaps.entities.LevelContinueEntity;
 
 public class GroundTileMap1 extends TileMap {
     private static Size tileSize;
@@ -14,9 +13,9 @@ public class GroundTileMap1 extends TileMap {
     public void setupEntities() {
         tileSize = new Size(TileSizeUtil.getTileSize(), TileSizeUtil.getTileSize());
 
-        addEntity(1, GroundEntity.class, tileSize);
-        addEntity(3, LevelProgressEntity.class, tileSize);
-        addEntity(8, GrassEntity.class, tileSize);
+        addEntity(1, GrassBlockEntity.class, tileSize);
+        addEntity(3, LevelContinueEntity.class, tileSize);
+        addEntity(8, DirtEntity.class, tileSize);
     }
 
     @Override

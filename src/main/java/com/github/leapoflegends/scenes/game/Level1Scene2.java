@@ -9,7 +9,7 @@ import com.github.leapoflegends.entities.enemy.Snake;
 import com.github.leapoflegends.entities.enemy.Zombie;
 import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.GroundTileMap;
+import com.github.leapoflegends.tilemaps.GroundTileMap1Part2;
 
 public class Level1Scene2 extends DynamicScene implements TileMapContainer {
     private final MainGame game;
@@ -39,7 +39,7 @@ public class Level1Scene2 extends DynamicScene implements TileMapContainer {
     }
 
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap();
+        var groundScreenMap = new GroundTileMap1Part2();
         addTileMap(groundScreenMap);
     }
 }

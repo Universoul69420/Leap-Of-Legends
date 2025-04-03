@@ -2,21 +2,14 @@ package com.github.leapoflegends.scenes.game;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.scenes.ScrollableDynamicScene;
-import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Zombie;
 import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.GroundTileMap2;
-import com.github.leapoflegends.tilemaps.GroundTileMap3;
-import javafx.scene.input.KeyCode;
+import com.github.leapoflegends.tilemaps.GroundTileMap3P2;
 
-import java.util.List;
-import java.util.Set;
 
 public class Level3Scene2 extends ScrollableDynamicScene implements TileMapContainer {
     private MainGame game;
@@ -45,7 +38,7 @@ public class Level3Scene2 extends ScrollableDynamicScene implements TileMapConta
 
     @Override
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap3();
+        var groundScreenMap = new GroundTileMap3P2();
         addTileMap(groundScreenMap);
     }
 
