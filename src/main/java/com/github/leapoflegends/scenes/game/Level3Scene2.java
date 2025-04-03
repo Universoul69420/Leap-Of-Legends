@@ -2,21 +2,14 @@ package com.github.leapoflegends.scenes.game;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.scenes.ScrollableDynamicScene;
-import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
-import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Zombie;
 import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.GroundTileMap2;
-import com.github.leapoflegends.tilemaps.GroundTileMap3;
-import javafx.scene.input.KeyCode;
+import com.github.leapoflegends.tilemaps.GroundTileMap3P2;
 
-import java.util.List;
-import java.util.Set;
 
 public class Level3Scene2 extends ScrollableDynamicScene implements TileMapContainer {
     private MainGame game;
@@ -38,14 +31,14 @@ public class Level3Scene2 extends ScrollableDynamicScene implements TileMapConta
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
         player = new Player(new Coordinate2D(100, 200), healthDisplay, game);
-        var zombie = new Zombie(new Coordinate2D(760, 400));
+        var zombie = new Zombie(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 2);
         addEntity(player, false);
         addEntity(healthDisplay, true);
     }
 
     @Override
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap3();
+        var groundScreenMap = new GroundTileMap3P2();
         addTileMap(groundScreenMap);
     }
 

@@ -30,7 +30,7 @@ public class Level4Scene extends DynamicScene implements TileMapContainer {
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
         var player = new Player(new Coordinate2D(10, 300), healthDisplay, game);
-        Enemy snake = new Snake(new Coordinate2D(760, 400));
+        Enemy snake = new Snake(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 2);
         addEntity(player);
         addEntity(snake);
         addEntity(healthDisplay);

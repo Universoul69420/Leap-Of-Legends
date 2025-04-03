@@ -10,11 +10,15 @@ import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
 
 import java.util.List;
 public class Snake extends Enemy {
-    public Snake(Coordinate2D initialLocation) {
+    private Coordinate2D respawnLocation;
+    private int speed;
+    public Snake(Coordinate2D initialLocation, Coordinate2D respawnLocation, int speed) {
         super("sprites/snake.png", initialLocation, new Size(32, 16), 60);
-        setMotion(2, Direction.LEFT);
+        setMotion(speed, Direction.LEFT);
         setGravityConstant(0.055);
         setFrictionConstant(0.04);
+        this.respawnLocation = respawnLocation;
+        this.speed = speed;
     }
 
     @Override
@@ -25,15 +29,17 @@ public class Snake extends Enemy {
                 setMotion(2, Direction.LEFT);
             }
             if (collider instanceof LavaSourceEntity) {
-                setAnchorLocation(new Coordinate2D(800, 400));
-            }
-            else {
-                setMotion(2, Direction.LEFT);
+                setAnchorLocation(respawnLocation);
+
+            } else if (collider instanceof Snake || collider instanceof Zombie) {
+
+            } else {
+                setMotion(speed, Direction.LEFT);
             }
         }
     }
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
-        setAnchorLocation(new Coordinate2D(800, 400));
+        setAnchorLocation(respawnLocation);
     }
 }
