@@ -13,13 +13,16 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Enemy;
+import com.github.leapoflegends.entities.text.DeathText;
 import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
 import com.github.leapoflegends.tilemaps.entities.level.GameCompleteEntity;
 import com.github.leapoflegends.tilemaps.entities.obstacle.BushObstacleEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelContinueEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelFinishEntity;
+import com.github.leapoflegends.tilemaps.entities.obstacle.LavaObstacleEntity;
 import com.github.leapoflegends.tilemaps.entities.obstacle.Obstacle;
+import com.sun.tools.javac.Main;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
@@ -29,14 +32,17 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     private int health = 100;
     private final MainGame game;
     private final HealthText healthText;
+    private final DeathText deathText;
     private boolean jumpCooldown = false;
     private boolean isOnGround = false;
 
-    public Player(Coordinate2D location, HealthText healthText, MainGame game) {
+    public Player(Coordinate2D location, HealthText healthText, DeathText deathText, MainGame game) {
         super("sprites/player.png", location, new Size(MainGame.tileSize, (MainGame.tileSize - 1)), 1, 2);
         this.game = game;
         this.healthText = healthText;
+        this.deathText = deathText;
         healthText.setText(health);
+        deathText.setText(MainGame.deathCounter);
 
         setGravityConstant(0.075);
         setFrictionConstant(0.04);
@@ -54,6 +60,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                 healthText.setText(health);
                 if (health <= 0) {
                     game.setActiveScene(4);
+                    MainGame.deathCounter += 1;
                 }
             }
             if (collider instanceof Obstacle obstacle) {
@@ -69,7 +76,14 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                     health -= obstacle.getDamage();
                     healthText.setText(health);
                     if (collider instanceof BushObstacleEntity) {
+                        if (health <= 0) {
+                            game.setActiveScene(4);
+                            MainGame.deathCounter += 1;
+                        }
                         ((BushObstacleEntity) collider).remove();
+                    }
+                    if (collider instanceof LavaObstacleEntity) {
+                        MainGame.deathCounter += 0.5;
                     }
                     if (health <= 0) {
                         game.setActiveScene(4);

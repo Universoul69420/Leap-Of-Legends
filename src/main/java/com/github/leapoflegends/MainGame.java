@@ -13,6 +13,7 @@ public class MainGame extends YaegerGame {
         launch(args);
     }
     public static int currentLevel = 1;
+    public static float deathCounter = 0;
     public static int tileSize;
     public static Size getCalculatedTileSize() {
         return new Size(tileSize, tileSize);

@@ -15,6 +15,7 @@ public class LevelFailedScene extends TextScene {
         setBackgroundImage("backgrounds/levelfailed.png");
     }
 
+
     @Override
     public void setupEntities() {
         Button menuButton = new Button(new Coordinate2D(550, 360), "MENU", 0, GAME, 36, Color.BLACK, false);
