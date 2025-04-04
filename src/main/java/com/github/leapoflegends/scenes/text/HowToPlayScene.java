@@ -1,16 +1,14 @@
 package com.github.leapoflegends.scenes.text;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.buttons.Button;
 import javafx.scene.paint.Color;
 
-public class HowToPlayScene extends StaticScene {
-    private MainGame game;
+public class HowToPlayScene extends TextScene {
 
-    public HowToPlayScene(MainGame game) {
-        this.game = game;
+    public HowToPlayScene(MainGame GAME) {
+        super(GAME);
     }
     @Override
     public void setupScene() {
@@ -19,7 +17,7 @@ public class HowToPlayScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var menuButton = new Button(new Coordinate2D(10, 10), "MENU", 0, game, 30, Color.BLACK);
+        Button menuButton = new Button(new Coordinate2D(10, 10), "MENU", 0, GAME, 30, Color.BLACK, false);
         addEntity(menuButton);
     }
 }

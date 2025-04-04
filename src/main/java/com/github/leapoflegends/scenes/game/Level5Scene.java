@@ -1,23 +1,18 @@
 package com.github.leapoflegends.scenes.game;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.TileMapContainer;
+import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.enemy.Snake;
-import com.github.leapoflegends.entities.enemy.Zombie;
 import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.GroundTileMap2;
-import com.github.leapoflegends.tilemaps.GroundTileMap3;
 import com.github.leapoflegends.tilemaps.GroundTileMap5;
 
-public class Level5Scene extends DynamicScene implements TileMapContainer {
-    private final MainGame GAME;
+public class Level5Scene extends GameScene {
 
     public Level5Scene(MainGame GAME) {
-        this.GAME = GAME;
+        super(GAME);
 
     }
 
@@ -41,7 +36,7 @@ public class Level5Scene extends DynamicScene implements TileMapContainer {
     }
 
     public void setupTileMaps() {
-        GroundTileMap5 groundScreenMap = new GroundTileMap5();
+        TileMap groundScreenMap = new GroundTileMap5();
         addTileMap(groundScreenMap);
     }
 }

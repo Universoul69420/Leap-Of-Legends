@@ -6,11 +6,10 @@ import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.buttons.Button;
 import javafx.scene.paint.Color;
 
-public class GameCompleteScene extends StaticScene {
-    private MainGame game;
+public class GameCompleteScene extends TextScene {
 
-    public GameCompleteScene(MainGame game) {
-        this.game = game;
+    public GameCompleteScene(MainGame GAME) {
+        super(GAME);
     }
     @Override
     public void setupScene() {
@@ -19,7 +18,7 @@ public class GameCompleteScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        Button menuButton = new Button(new Coordinate2D(getWidth()/2-30, 420), "Menu", 0, game, 40, Color.WHITE);
+        Button menuButton = new Button(new Coordinate2D(getWidth()/2, 420), "Menu", 0, GAME, 40, Color.WHITE, false);
         addEntity(menuButton);
     }
 }
