@@ -6,8 +6,8 @@ import com.github.leapoflegends.MainGame;
 
 public abstract class GameScene extends DynamicScene implements TileMapContainer {
     final protected MainGame GAME;
-    public GameScene(MainGame GAME) {
-        this.GAME = GAME;
+    public GameScene(MainGame game) {
+        this.GAME = game;
     }
 
     public abstract void setupScene();

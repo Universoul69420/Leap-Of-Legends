@@ -8,8 +8,8 @@ import javafx.scene.paint.Color;
 
 public class GameCompleteScene extends TextScene {
 
-    public GameCompleteScene(MainGame GAME) {
-        super(GAME);
+    public GameCompleteScene(MainGame game) {
+        super(game);
     }
     @Override
     public void setupScene() {
@@ -18,7 +18,7 @@ public class GameCompleteScene extends TextScene {
 
     @Override
     public void setupEntities() {
-        Button menuButton = new Button(new Coordinate2D(getWidth()/2, 420), "Menu", 0, GAME, 40, Color.WHITE, false);
+        Button menuButton = new Button(new Coordinate2D(getWidth()/2 - 70, 420), "Menu", 0, GAME, 40, Color.WHITE, false);
         addEntity(menuButton);
     }
 }

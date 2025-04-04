@@ -12,8 +12,8 @@ import com.github.leapoflegends.tilemaps.GroundTileMap1P2;
 
 public class Level1Scene2 extends GameScene{
 
-    public Level1Scene2(MainGame GAME) {
-        super(GAME);
+    public Level1Scene2(MainGame game) {
+        super(game);
     }
 
     @Override

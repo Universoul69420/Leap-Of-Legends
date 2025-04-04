@@ -9,8 +9,8 @@ import javafx.scene.paint.Color;
 public class LevelCompletedScene extends TextScene {
 
 
-    public LevelCompletedScene(MainGame GAME) {
-        super(GAME);
+    public LevelCompletedScene(MainGame game) {
+        super(game);
     }
     @Override
     public void setupScene() {
@@ -20,10 +20,10 @@ public class LevelCompletedScene extends TextScene {
 
     @Override
     public void setupEntities() {
-    Button nextlevel = new Button(new Coordinate2D(100, 440), "Play Next Level", MainGame.currentLevel+5, GAME, 32, Color.WHITE, false);
-    Button menu = new Button(new Coordinate2D(100, 340), "Menu", 0, GAME, 32, Color.WHITE, false);
+    Button nextLevelButton = new Button(new Coordinate2D(100, 440), "Play Next Level", MainGame.currentLevel+5, GAME, 32, Color.WHITE, false);
+    Button menuButton = new Button(new Coordinate2D(100, 340), "Menu", 0, GAME, 32, Color.WHITE, false);
 
-    addEntity(nextlevel);
-    addEntity(menu);
+    addEntity(nextLevelButton);
+    addEntity(menuButton);
     }
 }

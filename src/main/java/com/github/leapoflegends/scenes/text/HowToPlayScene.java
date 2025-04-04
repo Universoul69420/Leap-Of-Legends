@@ -7,8 +7,8 @@ import javafx.scene.paint.Color;
 
 public class HowToPlayScene extends TextScene {
 
-    public HowToPlayScene(MainGame GAME) {
-        super(GAME);
+    public HowToPlayScene(MainGame game) {
+        super(game);
     }
     @Override
     public void setupScene() {
