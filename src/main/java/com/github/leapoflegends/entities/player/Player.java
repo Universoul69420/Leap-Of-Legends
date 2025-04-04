@@ -83,7 +83,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                 game.setActiveScene(MainGame.currentLevel+9);
             }
             if (collider instanceof GameCompleteEntity) {
-                game.setActiveScene(4);
+                game.setActiveScene(3);
             }
         }
     }

@@ -19,7 +19,7 @@ public class GameCompleteScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        Button menuButton = new Button(new Coordinate2D(getWidth()/2, 420), "Menu", 0, game, 40, Color.WHITE);
+        Button menuButton = new Button(new Coordinate2D(getWidth()/2-30, 420), "Menu", 0, game, 40, Color.WHITE);
         addEntity(menuButton);
     }
 }
