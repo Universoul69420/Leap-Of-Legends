@@ -131,9 +131,9 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
                 setCurrentFrameIndex(0);
                 setMotion(2, 270);
-                if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
                 currentSpeed = 2;
             }
+            if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
                 setCurrentFrameIndex(1);
                 setMotion(2, 90);
                 currentSpeed = 2;
