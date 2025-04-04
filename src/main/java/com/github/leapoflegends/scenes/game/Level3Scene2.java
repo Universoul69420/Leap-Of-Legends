@@ -31,7 +31,6 @@ public class Level3Scene2 extends ScrollableDynamicScene implements TileMapConta
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
         player = new Player(new Coordinate2D(100, 200), healthDisplay, game);
-        var zombie = new Zombie(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 2);
         addEntity(player, false);
         addEntity(healthDisplay, true);
     }
