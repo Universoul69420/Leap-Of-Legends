@@ -13,30 +13,29 @@ import com.github.leapoflegends.tilemaps.GroundTileMap3;
 import com.github.leapoflegends.tilemaps.GroundTileMap5P2;
 
 public class Level5Scene2 extends DynamicScene implements TileMapContainer {
-    private final MainGame game;
-
-    public Level5Scene2(MainGame game) {
-        this.game = game;
+    private final MainGame GAME;
+    public Level5Scene2(MainGame GAME) {
+        this.GAME = GAME;
 
     }
 
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/background.png");
-        MainGame.currentLevel = 3;
+        MainGame.currentLevel = 5;
     }
 
 
     @Override
     public void setupEntities() {
-        var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        var player = new Player(new Coordinate2D(10, 420), healthDisplay, game);
+        HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
+        Player player = new Player(new Coordinate2D(10, 420), healthDisplay, GAME);
         addEntity(player);
         addEntity(healthDisplay);
     }
 
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap5P2();
+        GroundTileMap5P2 groundScreenMap = new GroundTileMap5P2();
         addTileMap(groundScreenMap);
     }
 }

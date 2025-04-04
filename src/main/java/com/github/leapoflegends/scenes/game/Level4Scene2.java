@@ -11,10 +11,10 @@ import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.GroundTileMap4P2;
 
 public class Level4Scene2 extends DynamicScene implements TileMapContainer {
-    private final MainGame game;
+    private final MainGame GAME;
 
-    public Level4Scene2(MainGame game) {
-        this.game = game;
+    public Level4Scene2(MainGame GAME) {
+        this.GAME = GAME;
 
     }
 
@@ -27,11 +27,11 @@ public class Level4Scene2 extends DynamicScene implements TileMapContainer {
 
     @Override
     public void setupEntities() {
-        var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        var player = new Player(new Coordinate2D(10, 200), healthDisplay, game);
-        Enemy snake = new Snake(new Coordinate2D(760, 400), new Coordinate2D(760, 400),  2);
-        Enemy snake2 = new Snake(new Coordinate2D(560, 400), new Coordinate2D(760, 400), 2);
-        Enemy snake3 = new Snake(new Coordinate2D(360, 400), new Coordinate2D(760, 400), 2);
+        HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
+        Player player = new Player(new Coordinate2D(10, 200), healthDisplay, GAME);
+        Enemy snake = new Snake(new Coordinate2D(760, 400), new Coordinate2D(760, 400),  70, 2);
+        Enemy snake2 = new Snake(new Coordinate2D(560, 400), new Coordinate2D(760, 400), 70, 2);
+        Enemy snake3 = new Snake(new Coordinate2D(360, 400), new Coordinate2D(760, 400), 70, 2);
         addEntity(player);
         addEntity(snake);
         addEntity(snake2);

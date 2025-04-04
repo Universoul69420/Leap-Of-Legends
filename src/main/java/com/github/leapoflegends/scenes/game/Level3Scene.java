@@ -12,10 +12,10 @@ import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.GroundTileMap3;
 
 public class Level3Scene extends DynamicScene implements TileMapContainer {
-    private final MainGame game;
+    private final MainGame GAME;
 
-    public Level3Scene(MainGame game) {
-        this.game = game;
+    public Level3Scene(MainGame GAME) {
+        this.GAME = GAME;
 
     }
 
@@ -29,7 +29,7 @@ public class Level3Scene extends DynamicScene implements TileMapContainer {
     @Override
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        var player = new Player(new Coordinate2D(780, 100), healthDisplay, game);
+        Player player = new Player(new Coordinate2D(780, 100), healthDisplay, GAME);
         addEntity(player);
         addEntity(healthDisplay);
     }

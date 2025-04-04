@@ -31,8 +31,6 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     private final HealthText healthText;
     private boolean jumpCooldown = false;
     private boolean isOnGround = false;
-    private boolean contact = false;
-    private double currentSpeed = 0;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
         super("sprites/player.png", location, new Size(32, 31), 1, 2);
@@ -50,7 +48,6 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
         for (Collider collider : colliders) {
             if (collider instanceof BlockEntity) {
                 handleGroundCollision((BlockEntity) collider);
-                contact = true;
             }
             if (collider instanceof Enemy) {
                 health -= ((Enemy) collider).getDamage();
@@ -91,30 +88,22 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
         if (overlapX < overlapY) {
             if (playerBox.getMaxX() > groundBox.getMinX() && playerBox.getMinX() < groundBox.getMinX()) {
                 setAnchorLocationX(groundBox.getMinX() - getWidth() - 1);
-//                System.out.println("xmaxplayer: " + playerBox.getMaxX());
-//                System.out.println("xminplayer: " + playerBox.getMinX());
-//                System.out.println("Xmaxground: " + groundBox.getMaxX());
-//                System.out.println("XmINground: " + groundBox.getMinX());
-//                System.out.println("Ymaxplayer: " + playerBox.getMaxY());
-//                System.out.println("Yminplayer: " + playerBox.getMinY());
-//                System.out.println("Ymaxground: " + groundBox.getMaxY());
-//                System.out.println("YmINground: " + groundBox.getMinY());
-
+                // Left Collision
             } else if (playerBox.getMinX() < groundBox.getMaxX() && playerBox.getMaxX() > groundBox.getMaxX()) {
                 setAnchorLocationX(groundBox.getMaxX() + 1);
-//                System.out.println("Collision detected: Right");
+                // Right Collision
             }
         } else {
             if (playerBox.getMaxY() > groundBox.getMinY() && playerBox.getMinY() < groundBox.getMinY()) {
                 setAnchorLocationY(groundBox.getMinY() - 31.3);
-                isOnGround = true; // Set isOnGround to true when a top collision is detected
-                jumpCooldown = false; // Reset jump cooldown
-//                System.out.println("Collision detected: Top");
-                setMotion(0, 0); // Reset vertical speed
+                isOnGround = true;
+                jumpCooldown = false;
+                setMotion(0, 0);
+                // Top Collision
             } else if (playerBox.getMinY() < groundBox.getMaxY() && playerBox.getMaxY() > groundBox.getMaxY()) {
                 setAnchorLocationY(groundBox.getMaxY() + 2);
-//                System.out.println("Collision detected: Bottom");
-                setMotion(0, 0); // Reset vertical speed
+                setMotion(0, 0);
+                // Bottom Collision
             }
         }
     }
@@ -136,12 +125,10 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
                 setCurrentFrameIndex(0);
                 setMotion(2, 270);
-                currentSpeed = 2;
             }
             if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
                 setCurrentFrameIndex(1);
                 setMotion(2, 90);
-                currentSpeed = 2;
             }
 
             if (keys.contains(KeyCode.SPACE)) {

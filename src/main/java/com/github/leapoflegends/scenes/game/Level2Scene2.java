@@ -9,14 +9,13 @@ import com.github.leapoflegends.entities.enemy.Snake;
 import com.github.leapoflegends.entities.enemy.Zombie;
 import com.github.leapoflegends.entities.player.Player;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.GroundTileMap1P2;
 import com.github.leapoflegends.tilemaps.GroundTileMap2P2;
 
 public class Level2Scene2 extends DynamicScene implements TileMapContainer {
-    private final MainGame game;
+    private final MainGame GAME;
 
-    public Level2Scene2(MainGame game) {
-        this.game = game;
+    public Level2Scene2(MainGame GAME) {
+        this.GAME = GAME;
 
     }
 
@@ -30,9 +29,9 @@ public class Level2Scene2 extends DynamicScene implements TileMapContainer {
     @Override
     public void setupEntities() {
         var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        var player = new Player(new Coordinate2D(10, 420), healthDisplay, game);
-        Enemy zombie = new Zombie(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 2);
-        Enemy snake = new Snake(new Coordinate2D(460, 400), new Coordinate2D(760, 400), 3);
+        Player player = new Player(new Coordinate2D(10, 420), healthDisplay, GAME);
+        Enemy zombie = new Zombie(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 100, 2);
+        Enemy snake = new Snake(new Coordinate2D(460, 400), new Coordinate2D(760, 400), 70, 2);
         addEntity(snake);
         addEntity(player);
         addEntity(zombie);

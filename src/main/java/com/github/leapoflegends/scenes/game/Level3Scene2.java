@@ -1,7 +1,6 @@
 package com.github.leapoflegends.scenes.game;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.leapoflegends.MainGame;
@@ -11,9 +10,10 @@ import com.github.leapoflegends.tilemaps.GroundTileMap3P2;
 
 
 public class Level3Scene2 extends DynamicScene implements TileMapContainer {
-    private MainGame game;
-    public Level3Scene2(MainGame game) {
-        this.game = game;
+    private final MainGame GAME;
+
+    public Level3Scene2(MainGame GAME) {
+        this.GAME = GAME;
     }
     @Override
     public void setupScene() {
@@ -23,15 +23,15 @@ public class Level3Scene2 extends DynamicScene implements TileMapContainer {
 
     @Override
     public void setupEntities() {
-        var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        Player player = new Player(new Coordinate2D(10, 400), healthDisplay, game);
+        HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
+        Player player = new Player(new Coordinate2D(100, 200), healthDisplay, GAME);
         addEntity(player);
         addEntity(healthDisplay);
     }
 
     @Override
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap3P2();
+        GroundTileMap3P2 groundScreenMap = new GroundTileMap3P2();
         addTileMap(groundScreenMap);
     }
 }

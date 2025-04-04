@@ -12,10 +12,10 @@ import com.github.leapoflegends.tilemaps.GroundTileMap1;
 import com.github.leapoflegends.tilemaps.GroundTileMap2;
 
 public class Level1Scene extends DynamicScene implements TileMapContainer {
-    private final MainGame game;
+    private final MainGame GAME;
 
-    public Level1Scene(MainGame game) {
-        this.game = game;
+    public Level1Scene(MainGame GAME) {
+        this.GAME = GAME;
     }
 
     @Override
@@ -26,14 +26,14 @@ public class Level1Scene extends DynamicScene implements TileMapContainer {
 
     @Override
     public void setupEntities() {
-        var healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        var player = new Player(new Coordinate2D(10, 420), healthDisplay, game);
+        HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
+        Player player = new Player(new Coordinate2D(10, 420), healthDisplay, GAME);
         addEntity(player);
         addEntity(healthDisplay);
     }
 
     public void setupTileMaps() {
-        var groundScreenMap = new GroundTileMap1();
+        GroundTileMap1 groundScreenMap = new GroundTileMap1();
         addTileMap(groundScreenMap);
     }
 }
