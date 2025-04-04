@@ -8,11 +8,10 @@ import com.github.leapoflegends.entities.buttons.LevelStartButton;
 import com.github.leapoflegends.entities.buttons.QuitButton;
 import javafx.scene.paint.Color;
 
-public class MenuScene extends StaticScene {
-    private MainGame game;
+public class MenuScene extends TextScene {
 
-    public MenuScene(MainGame game) {
-        this.game = game;
+    public MenuScene(MainGame GAME) {
+        super(GAME);
     }
     @Override
     public void setupScene() {
@@ -21,13 +20,13 @@ public class MenuScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var how2Play = new Button(new Coordinate2D(542, 590), "HOW TO PLAY?", 1, game, 32, Color.BLACK);
-        var quitButton = new QuitButton(new Coordinate2D(10, 590), game);
-        var level1 = new LevelStartButton(new Coordinate2D(20, 400), 1, game);
-        var level2 = new LevelStartButton(new Coordinate2D(180, 400), 2, game);
-        var level3 = new LevelStartButton(new Coordinate2D(340, 400), 3, game);
-        var level4 = new LevelStartButton(new Coordinate2D(500, 400), 4, game);
-        var level5 = new LevelStartButton(new Coordinate2D(660, 400), 5, game);
+        Button how2Play = new Button(new Coordinate2D(542, 590), "HOW TO PLAY?", 1, GAME, 32, Color.BLACK, false);
+        QuitButton quitButton = new QuitButton(new Coordinate2D(10, 590), GAME);
+        Button level1 = new Button(new Coordinate2D(20, 400), "", 1, GAME, 40, Color.MAROON, true);
+        Button level2 = new Button(new Coordinate2D(180, 400), "", 2, GAME, 40, Color.MAROON, true);
+        Button level3 = new Button(new Coordinate2D(340, 400), "", 3, GAME, 40, Color.MAROON, true);
+        Button level4 = new Button(new Coordinate2D(500, 400), "", 4, GAME, 40, Color.MAROON, true);
+        Button level5 = new Button(new Coordinate2D(660, 400), "", 5, GAME, 40, Color.MAROON, true);
         addEntity(quitButton);
         addEntity(how2Play);
         addEntity(level1);
