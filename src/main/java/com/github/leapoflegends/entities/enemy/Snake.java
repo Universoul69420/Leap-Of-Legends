@@ -5,8 +5,8 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.leapoflegends.tilemaps.entities.BlockEntity;
-import com.github.leapoflegends.tilemaps.entities.LavaSourceEntity;
+import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
+import com.github.leapoflegends.tilemaps.entities.obstacle.LavaObstacleEntity;
 
 import java.util.List;
 public class Snake extends Enemy {
@@ -28,7 +28,7 @@ public class Snake extends Enemy {
                 setMotion(0, Direction.DOWN);
                 setMotion(2, Direction.LEFT);
             }
-            if (collider instanceof LavaSourceEntity) {
+            if (collider instanceof LavaObstacleEntity) {
                 setAnchorLocation(respawnLocation);
 
             } else if (collider instanceof Snake || collider instanceof Zombie) {

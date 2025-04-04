@@ -13,13 +13,11 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Enemy;
-import com.github.leapoflegends.entities.obstacle.Obstacle;
 import com.github.leapoflegends.entities.text.HealthText;
-import com.github.leapoflegends.tilemaps.TileSizeUtil;
-import com.github.leapoflegends.tilemaps.entities.BlockEntity;
-import com.github.leapoflegends.tilemaps.entities.BushObstacleEntity;
-import com.github.leapoflegends.tilemaps.entities.LevelContinueEntity;
-import com.github.leapoflegends.tilemaps.entities.LevelFinishEntity;
+import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
+import com.github.leapoflegends.tilemaps.entities.obstacle.BushObstacleEntity;
+import com.github.leapoflegends.tilemaps.entities.level.LevelContinueEntity;
+import com.github.leapoflegends.tilemaps.entities.level.LevelFinishEntity;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
