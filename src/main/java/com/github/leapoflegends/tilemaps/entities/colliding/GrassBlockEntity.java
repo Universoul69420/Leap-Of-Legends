@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.Size;
 
 public class GrassBlockEntity extends BlockEntity {
 
-    public GrassBlockEntity(Coordinate2D location, Size size, Size tileSize) {
-        super("sprites/grass.png",location, size, tileSize);
+    public GrassBlockEntity(Coordinate2D location, final Size SIZE, final Size TILESIZE) {
+        super("sprites/grass.png",location, SIZE, TILESIZE);
     }
 }

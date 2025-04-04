@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
     public class DirtEntity extends SpriteEntity {
 
-        public DirtEntity(final Coordinate2D location, final Size size, final Size tileSize) {
-            super("sprites/World-Tiles1.png", location, tileSize);
+        public DirtEntity(final Coordinate2D location, final Size SIZE, final Size TILESIZE) {
+            super("sprites/World-Tiles1.png", location, TILESIZE);
         }
     }

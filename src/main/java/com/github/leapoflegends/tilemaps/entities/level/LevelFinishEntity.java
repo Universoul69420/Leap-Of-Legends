@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class LevelFinishEntity extends SpriteEntity implements Collider {
-    public LevelFinishEntity(Coordinate2D initialLocation, final Size size, final Size tileSize) {
-        super("sprites/portal.png", initialLocation, tileSize);
+    public LevelFinishEntity(Coordinate2D initialLocation, final Size SIZE, final Size TILESIZE) {
+        super("sprites/portal.png", initialLocation, TILESIZE);
     }
 }

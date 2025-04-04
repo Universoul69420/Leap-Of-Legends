@@ -7,8 +7,8 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public abstract class Obstacle extends SpriteEntity implements Collider {
     private int damage;
-    protected Obstacle(String resource, Coordinate2D initialLocation, Size size, final Size tileSize, int damage) {
-        super(resource, initialLocation, size);
+    protected Obstacle(String resource, Coordinate2D initialLocation, Size SIZE, final Size TILESIZE, int damage) {
+        super(resource, initialLocation, TILESIZE);
         this.damage = damage;
     }
 
