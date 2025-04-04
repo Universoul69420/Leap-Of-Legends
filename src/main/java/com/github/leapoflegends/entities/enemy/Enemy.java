@@ -14,11 +14,11 @@ public abstract class Enemy extends DynamicSpriteEntity implements Collider, Col
     private final int DAMAGE;
     private final Coordinate2D RESPAWNLOCATION;
     private final int SPEED;
-    protected Enemy(String resource, Coordinate2D initialLocation, Coordinate2D RESPAWNLOCATION, Size size, int DAMAGE, int SPEED) {
+    protected Enemy(String resource, Coordinate2D initialLocation, Coordinate2D respawnLocation, Size size, int damage, int speed) {
         super(resource, initialLocation, size);
-        this.DAMAGE = DAMAGE;
-        this.RESPAWNLOCATION = RESPAWNLOCATION;
-        this.SPEED = SPEED;
+        this.DAMAGE = damage;
+        this.RESPAWNLOCATION = respawnLocation;
+        this.SPEED = speed;
     }
 
 
