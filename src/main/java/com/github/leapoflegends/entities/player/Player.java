@@ -18,6 +18,7 @@ import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
 import com.github.leapoflegends.tilemaps.entities.obstacle.BushObstacleEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelContinueEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelFinishEntity;
+import com.github.leapoflegends.tilemaps.entities.obstacle.Obstacle;
 import javafx.scene.input.KeyCode;
 
 import java.util.List;
@@ -57,19 +58,21 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                     game.setActiveScene(4);
                 }
             }
+            if (collider instanceof Obstacle) {
+                health -= ((Obstacle) collider).getDamage();
+                healthText.setText(health);
+                if (collider instanceof BushObstacleEntity) {
+                ((BushObstacleEntity) collider).remove();
+                }
+                if (health <= 0) {
+                    game.setActiveScene(4);
+                }
+            }
             if (collider instanceof LevelFinishEntity) {
                 game.setActiveScene(2);
             }
             if (collider instanceof LevelContinueEntity) {
                 game.setActiveScene(MainGame.currentLevel+9);
-            }
-            if (collider instanceof BushObstacleEntity) {
-                health -= 50;
-                ((BushObstacleEntity) collider).remove();
-                healthText.setText(health);
-                if (health <= 0) {
-                    game.setActiveScene(4);
-                }
             }
         }
     }
