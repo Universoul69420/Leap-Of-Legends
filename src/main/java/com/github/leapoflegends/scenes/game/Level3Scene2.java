@@ -24,7 +24,7 @@ public class Level3Scene2 extends DynamicScene implements TileMapContainer {
     @Override
     public void setupEntities() {
         HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
-        Player player = new Player(new Coordinate2D(100, 200), healthDisplay, GAME);
+        Player player = new Player(new Coordinate2D(10, 400), healthDisplay, GAME);
         addEntity(player);
         addEntity(healthDisplay);
     }
