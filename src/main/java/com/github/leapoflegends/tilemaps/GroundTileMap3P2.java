@@ -3,6 +3,7 @@ package com.github.leapoflegends.tilemaps;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.TileMap;
+import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.tilemaps.entities.*;
 import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
 import com.github.leapoflegends.tilemaps.entities.colliding.StoneBlockEntity;
@@ -16,7 +17,7 @@ public class GroundTileMap3P2 extends TileMap {
 
     @Override
     public void setupEntities() {
-        Size tileSize = TileSizeUtil.getCalculatedTileSize();
+        Size tileSize = MainGame.getCalculatedTileSize();
 
         addEntity(1, BlockEntity.class, tileSize);
         addEntity(2, LevelFinishEntity.class, tileSize);

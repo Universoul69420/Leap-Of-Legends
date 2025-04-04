@@ -33,7 +33,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     private boolean isOnGround = false;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
-        super("sprites/player.png", location, new Size(32, 31), 1, 2);
+        super("sprites/player.png", location, new Size(MainGame.tileSize, (MainGame.tileSize - 1)), 1, 2);
         this.game = game;
         this.healthText = healthText;
         healthText.setText(health);

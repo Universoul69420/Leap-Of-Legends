@@ -30,8 +30,8 @@ public class Level2Scene extends GameScene {
         HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
         Player player = new Player(new Coordinate2D(10, 420), healthDisplay, GAME);
         Enemy zombie = new Zombie(new Coordinate2D(760, 420), new Coordinate2D(760, 420), 100, 2);
-        Enemy snake = new Snake(new Coordinate2D(649, 420), new Coordinate2D(760, 420), 70, 2);
-        Enemy snake2 = new Snake(new Coordinate2D(760, 100), new Coordinate2D(760, 100), 70, 2);
+        Enemy snake = new Snake(new Coordinate2D(649, 420), new Coordinate2D(760, 420), 100, 2);
+        Enemy snake2 = new Snake(new Coordinate2D(760, 100), new Coordinate2D(760, 100), 100, 2);
         addEntity(snake);
         addEntity(snake2);
         addEntity(player);

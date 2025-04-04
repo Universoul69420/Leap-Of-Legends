@@ -2,6 +2,7 @@ package com.github.leapoflegends.tilemaps;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.TileMap;
+import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.tilemaps.entities.*;
 import com.github.leapoflegends.tilemaps.entities.level.LevelContinueEntity;
 import com.github.leapoflegends.tilemaps.entities.colliding.PoisonedGrassBlockEntity;
@@ -13,7 +14,7 @@ public class GroundTileMap4 extends TileMap {
 
     @Override
     public void setupEntities() {
-        Size tileSize = TileSizeUtil.getCalculatedTileSize();
+        Size tileSize = MainGame.getCalculatedTileSize();
 
         addEntity(1, PoisonedGrassBlockEntity.class, tileSize);
         addEntity(2, LevelContinueEntity.class, tileSize);

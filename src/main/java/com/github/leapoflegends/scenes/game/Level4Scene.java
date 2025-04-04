@@ -26,7 +26,7 @@ public class Level4Scene extends GameScene {
     public void setupEntities() {
         HealthText healthDisplay = new HealthText(new Coordinate2D(10, 10));
         Player player = new Player(new Coordinate2D(10, 300), healthDisplay, GAME);
-        Enemy snake = new Snake(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 70, 2);
+        Enemy snake = new Snake(new Coordinate2D(760, 400), new Coordinate2D(760, 400), 100, 2);
         addEntity(player);
         addEntity(snake);
         addEntity(healthDisplay);
