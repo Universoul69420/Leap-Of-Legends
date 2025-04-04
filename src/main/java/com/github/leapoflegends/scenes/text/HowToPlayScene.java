@@ -14,7 +14,7 @@ public class HowToPlayScene extends StaticScene {
     }
     @Override
     public void setupScene() {
-        setBackgroundImage("backgrounds/how2playback.png");
+        setBackgroundImage("backgrounds/how2playbackgnd.png");
     }
 
     @Override

@@ -15,6 +15,7 @@ import com.github.leapoflegends.MainGame;
 import com.github.leapoflegends.entities.enemy.Enemy;
 import com.github.leapoflegends.entities.text.HealthText;
 import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
+import com.github.leapoflegends.tilemaps.entities.level.GameCompleteEntity;
 import com.github.leapoflegends.tilemaps.entities.obstacle.BushObstacleEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelContinueEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelFinishEntity;
@@ -73,6 +74,9 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             }
             if (collider instanceof LevelContinueEntity) {
                 game.setActiveScene(MainGame.currentLevel+9);
+            }
+            if (collider instanceof GameCompleteEntity) {
+                game.setActiveScene(4);
             }
         }
     }

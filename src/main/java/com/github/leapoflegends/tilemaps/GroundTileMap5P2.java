@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.TileMap;
 import com.github.leapoflegends.tilemaps.entities.*;
 import com.github.leapoflegends.tilemaps.entities.colliding.BlockEntity;
+import com.github.leapoflegends.tilemaps.entities.level.GameCompleteEntity;
 import com.github.leapoflegends.tilemaps.entities.level.LevelFinishEntity;
 import com.github.leapoflegends.tilemaps.entities.colliding.StoneBlockEntity;
 import com.github.leapoflegends.tilemaps.entities.obstacle.BushObstacleEntity;
@@ -19,7 +20,7 @@ public class GroundTileMap5P2 extends TileMap {
         Size tileSize = TileSizeUtil.getCalculatedTileSize();
 
         addEntity(1, BlockEntity.class, tileSize);
-        addEntity(2, LevelFinishEntity.class, tileSize);
+        addEntity(2, GameCompleteEntity.class, tileSize);
         addEntity(3, LavaObstacleEntity.class, tileSize);
         addEntity(4, BushObstacleEntity.class, tileSize);
         addEntity(5, StoneBlockEntity.class, tileSize);
