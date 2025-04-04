@@ -56,14 +56,24 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
                     game.setActiveScene(4);
                 }
             }
-            if (collider instanceof Obstacle) {
-                health -= ((Obstacle) collider).getDamage();
-                healthText.setText(health);
-                if (collider instanceof BushObstacleEntity) {
-                ((BushObstacleEntity) collider).remove();
-                }
-                if (health <= 0) {
-                    game.setActiveScene(4);
+            if (collider instanceof Obstacle obstacle) {
+                var playerBox = getBoundingBox();
+                var obstacleBox = obstacle.getBoundingBox();
+
+                boolean collisionX = playerBox.getMaxX() > obstacleBox.getMinX() &&
+                        playerBox.getMinX() < obstacleBox.getMaxX();
+                boolean collisionY = playerBox.getMaxY() > obstacleBox.getMinY() + 10 &&
+                        playerBox.getMinY() < obstacleBox.getMaxY() + 10;
+
+                if (collisionX && collisionY) {
+                    health -= obstacle.getDamage();
+                    healthText.setText(health);
+                    if (collider instanceof BushObstacleEntity) {
+                        ((BushObstacleEntity) collider).remove();
+                    }
+                    if (health <= 0) {
+                        game.setActiveScene(4);
+                    }
                 }
             }
             if (collider instanceof LevelFinishEntity) {
