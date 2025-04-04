@@ -30,6 +30,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     private boolean jumpCooldown = false;
     private boolean isOnGround = false;
     private boolean contact = false;
+    private double currentSpeed = 0;
 
     public Player(Coordinate2D location, HealthText healthText, MainGame game) {
         super("sprites/player.png", location, new Size(32, 31), 1, 2);
@@ -37,7 +38,7 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
         this.healthText = healthText;
         healthText.setText(health);
 
-        setGravityConstant(0.055);
+        setGravityConstant(0.075);
         setFrictionConstant(0.04);
     }
 
@@ -114,9 +115,11 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         if (sceneBorder == SceneBorder.LEFT) {
-            setAnchorLocationX(0);
+            setAnchorLocationX(1);
+        } else if (sceneBorder == SceneBorder.RIGHT) {
+            setAnchorLocationX(getSceneWidth() - getWidth() - 1);
         } else if (sceneBorder == SceneBorder.TOP) {
-            setAnchorLocationY(0);
+            setAnchorLocationY(1);
         }
     }
 
@@ -126,31 +129,30 @@ public class Player extends DynamicSpriteEntity implements TimerContainer, Colli
             if (keys.contains(KeyCode.A) && !keys.contains(KeyCode.SPACE)) {
                 setCurrentFrameIndex(0);
                 setMotion(2, 270);
+                if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
+                currentSpeed = 2;
             }
-            if (keys.contains(KeyCode.D) && !keys.contains(KeyCode.SPACE)) {
                 setCurrentFrameIndex(1);
                 setMotion(2, 90);
-            }
-            if (keys.contains(KeyCode.S)) {
-                setMotion(2, 270);
+                currentSpeed = 2;
             }
 
             if (keys.contains(KeyCode.SPACE)) {
                 if (!jumpCooldown) {
-                    double currentSpeed = (getSpeed() * 2);
-                    double currentDirection = getDirection();
-                    double jumpSpeed = 6;
                     double jumpDirection = 180;
 
-                    double combinedSpeed = Math.sqrt(Math.pow(currentSpeed, 2) + Math.pow(jumpSpeed, 2));
-                    double combinedDirection = Math.toDegrees(Math.atan2(Math.sin(Math.toRadians(jumpDirection)) * jumpSpeed + Math.sin(Math.toRadians(currentDirection)) * currentSpeed,
-                            Math.cos(Math.toRadians(jumpDirection)) * jumpSpeed + Math.cos(Math.toRadians(currentDirection)) * currentSpeed));
-
-                    setMotion(combinedSpeed, combinedDirection);
+                    if (keys.contains(KeyCode.D)) {
+                        setMotion(7, 140); // Jumping right
+                    } else if (keys.contains(KeyCode.A)) {
+                        setMotion(7, 215); // Jumping left
+                    } else {
+                        setMotion(6, jumpDirection); // Jumping up
+                    }
 
                     isOnGround = false;
                     jumpCooldown = true;
                 }
+
             }
         }
     }
